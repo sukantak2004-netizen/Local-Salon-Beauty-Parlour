@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>404 - Page Not Found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --brand-main: #C6705C; /* Using Terra as primary */
+            --brand-dark: #A15545;
+            --brand-bg: #FAF6F3;
+            --brand-surface: #FFFFFF;
+            --brand-text: #2A2522;
+            --brand-text-light: #7A706A;
+            --brand-border: #F0E8E1;
+        }
+
+        body {
+            background-color: var(--brand-bg);
+            color: var(--brand-text);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .font-display {
+            font-family: 'Fraunces', serif;
+        }
+
+        .card-container {
+            background: var(--brand-surface);
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px -15px rgba(198, 112, 92, 0.08);
+            border: 1px solid var(--brand-border);
+            width: 100%;
+            max-w-2xl;
+            max-width: 600px;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            margin: auto;
+        }
+
+        .logo-circle {
+            width: 4rem;
+            height: 4rem;
+            background: var(--brand-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto;
+            box-shadow: 0 8px 16px -4px rgba(161, 85, 69, 0.3);
+        }
+
+        .logo-text {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--brand-text);
+            margin-top: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-subtext {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--brand-main);
+            margin-top: 0.25rem;
+        }
+
+        .lotus-icon {
+            font-size: 3rem;
+            color: var(--brand-main);
+            opacity: 0.6;
+            margin: 2rem 0;
+        }
+
+        .big-404 {
+            font-family: 'Fraunces', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--brand-dark);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .title-404 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            color: var(--brand-text);
+            margin-bottom: 1.5rem;
+        }
+        
+        .title-404 span {
+            color: var(--brand-main);
+            font-style: italic;
+            font-family: 'Fraunces', serif;
+        }
+
+        .desc-text {
+            color: var(--brand-text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 420px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn-solid, .btn-outline {
+            padding: 0.8rem 1.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-solid {
+            background: var(--brand-main);
+            color: white;
+            border: 1px solid var(--brand-main);
+            box-shadow: 0 4px 12px rgba(198, 112, 92, 0.25);
+        }
+        .btn-solid:hover {
+            background: var(--brand-dark);
+            border-color: var(--brand-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--brand-main);
+            border: 1px solid var(--brand-main);
+        }
+        .btn-outline:hover {
+            background: rgba(198, 112, 92, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--brand-border);
+            margin: 0 1rem 2rem 1rem;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .quick-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--brand-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .quick-link:not(:last-child)::after {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 12px;
+            background: var(--brand-border);
+            margin-left: 1rem;
+        }
+        .quick-link:hover {
+            color: var(--brand-dark);
+        }
+
+        .support-text {
+            font-size: 0.85rem;
+            color: var(--brand-text-light);
+        }
+        .support-text a {
+            color: var(--brand-main);
+            font-weight: 600;
+        }
+        .support-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- Logo Area -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+            <div class="logo-circle" style="margin: 0; width: 3.5rem; height: 3.5rem;">
+                <i class="fa-solid fa-spa"></i>
+            </div>
+            <div style="text-align: left;">
+                <div class="logo-text" style="margin-top: 0; font-size: 1.5rem;">Lumiere</div>
+                <div class="logo-subtext" style="margin-top: 0;">Local Salon</div>
+            </div>
+        </div>
+
+        <!-- Lotus Illustration -->
+        <div class="lotus-icon">
+            <i class="fa-brands fa-pagelines"></i>
+        </div>
+
+        <!-- 404 Content -->
+        <div class="big-404">404</div>
+        <div class="title-404">Oops! Page <span>Not Found</span></div>
+        
+        <p class="desc-text">
+            The page you're looking for has wandered off &mdash; like a hair that decided to grow back. Don't worry, our studio is right where you left it.
+        </p>
+
+        <!-- Buttons -->
+        <div class="btn-group">
+            <a href="index.html" class="btn-solid">
+                <i class="fa-solid fa-house"></i> Back to Home
+            </a>
+            <a href="contact.html" class="btn-outline">
+                <i class="fa-regular fa-calendar-check"></i> Book Now
+            </a>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+            <a href="about.html" class="quick-link">About</a>
+            <a href="services.html" class="quick-link">Services</a>
+            <a href="pricing.html" class="quick-link">Pricing</a>
+            <a href="gallery.html" class="quick-link">Gallery</a>
+        </div>
+
+        <div class="support-text">
+            <i class="fa-solid fa-magnifying-glass text-xs mr-1"></i> Need help finding something? <a href="contact.html">Contact our team</a>
+        </div>
+    </div>
+
+</body>
+</html>

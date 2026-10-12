@@ -1,0 +1,833 @@
+﻿<!DOCTYPE html>
+
+<html data-theme="light" dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="assets/fav.png" rel="icon" type="image/jpeg"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<title>LUMIERE · Local Salon</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+        :root, html[data-theme='light'] {
+            --terra: #C6705C;
+            --terra-soft: #F0DDD6;
+            --sage: #7A8B6F;
+            --sage-soft: #E3E8DD;
+            --cream: #F5EFE6;
+            --paper: #FBF7F1;
+            --ink: #2A2522;
+            --muted: #8A7F76;
+            --line: #E5DCD1;
+
+            --band-bg: #2A2522;
+            --band-text: #F5EFE6;
+            --inverse-bg: #2A2522;
+            --inverse-text: #F5EFE6;
+            
+            --color-background: var(--paper);
+            --color-primary-text: var(--ink);
+            --color-secondary-text: var(--muted);
+            --color-accent: var(--terra);
+            --color-accent-light: var(--terra-soft);
+            --color-border: var(--line);
+            --color-hover: #EFE7DC;
+            --color-nav-bg: var(--cream);
+            --color-nav-text: var(--ink);
+        }
+        html[data-theme='dark'] {
+            --terra: #E08A75;
+            --terra-soft: #3D231C;
+            --sage: #9EAF92;
+            --sage-soft: #2A3226;
+            --cream: #1F1B18;
+            --paper: #17140F;
+            --ink: #F5EFE6;
+            --muted: #A89B90;
+            --line: #322C26;
+
+            --band-bg: #0F0D0A;
+            --band-text: #F5EFE6;
+            --inverse-bg: #0F0D0A;
+            --inverse-text: #F5EFE6;
+
+            --color-background: var(--paper);
+            --color-primary-text: var(--ink);
+            --color-secondary-text: var(--muted);
+            --color-accent: var(--terra);
+            --color-accent-light: var(--terra-soft);
+            --color-border: var(--line);
+            --color-hover: #262019;
+            --color-nav-bg: #1F1B18;
+            --color-nav-text: #F5EFE6;
+        }
+
+        * { -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        .font-display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+        h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-sage { color: var(--sage); }
+        .text-band { color: var(--band-text); }
+        .text-inverse { color: var(--inverse-text); }
+
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .bg-sage { background-color: var(--sage); }
+        .bg-terra-soft { background-color: var(--terra-soft); }
+        .bg-sage-soft { background-color: var(--sage-soft); }
+        .bg-cream { background-color: var(--cream); }
+        .bg-band { background-color: var(--band-bg); }
+        .bg-inverse { background-color: var(--inverse-bg); }
+
+        .border-border { border-color: var(--color-border); }
+        .border-sage { border-color: var(--sage); }
+        .border-accent { border-color: var(--color-accent); }
+
+        /* NAVBAR */
+        #main-header {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 1480px;
+            z-index: 50;
+            background: var(--color-nav-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 100px;
+            box-shadow: 0 12px 40px -12px rgba(42, 37, 34, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        html[data-theme='dark'] #main-header { box-shadow: 0 12px 40px -12px rgba(0,0,0,0.6); }
+        #main-header::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 40%;
+            background: linear-gradient(180deg, var(--terra) 0%, var(--sage) 100%);
+            border-radius: 4px;
+        }
+        @media (max-width: 1280px) { #main-header::before { display: none; } }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-decoration: none;
+            padding-left: 1.5rem;
+        }
+        @media (max-width: 1280px) { .brand-logo { padding-left: 0; } }
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--terra);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            font-size: 1rem;
+            position: relative;
+            flex-shrink: 0;
+            transition: transform 0.4s ease;
+        }
+        .brand-logo:hover .brand-mark { transform: rotate(-12deg) scale(1.08); }
+        .brand-mark::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            border: 1.5px dashed var(--terra);
+            opacity: 0.7;
+        }
+        .brand-text { display: flex; flex-direction: column; line-height: 1; }
+        .brand-name {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: 0.02em;
+            color: var(--color-nav-text);
+        }
+        .brand-name em { font-style: italic; color: var(--terra); }
+        .brand-sub {
+            font-size: 0.55rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--color-secondary-text);
+            margin-top: 3px;
+            font-weight: 700;
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 0.7rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-nav-text);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .nav-link:hover { color: var(--terra); }
+        .nav-link.active { color: var(--terra); }
+        .nav-link.active::before { content: '•';
+            position: absolute;
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--terra);
+            font-size: 1.1rem;
+        }
+
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: var(--color-nav-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            box-shadow: 0 24px 48px -16px rgba(42, 37, 34, 0.25);
+            min-width: 200px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.28s ease;
+            padding: 0.5rem;
+            overflow: hidden;
+        }
+        html[data-theme='dark'] .dropdown-menu { box-shadow: 0 24px 48px -16px rgba(0,0,0,0.7); }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--terra), var(--sage));
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.6rem 0.9rem;
+            color: var(--color-nav-text);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover { background: var(--terra-soft); color: var(--terra); padding-left: 1.3rem; }
+
+        .nav-icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-nav-text);
+            transition: all 0.25s ease;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .nav-icon-btn:hover {
+            background: var(--terra);
+            color: #FFF;
+            border-color: var(--terra);
+            transform: rotate(8deg);
+        }
+
+        .nav-cta {
+            background: var(--color-nav-text);
+            color: var(--color-nav-bg);
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.65rem 1.3rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            border: 1.5px solid var(--color-nav-text);
+        }
+        .nav-cta:hover {
+            background: var(--terra);
+            border-color: var(--terra);
+            color: #FFF;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px -6px rgba(198, 112, 92, 0.5);
+        }
+
+        .btn-primary {
+            background: var(--color-nav-text);
+            color: var(--color-nav-bg);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid var(--color-nav-text);
+        }
+        .btn-primary:hover {
+            background: var(--terra);
+            border-color: var(--terra);
+            color: #FFF;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 28px -8px rgba(198, 112, 92, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-primary-text);
+            border: 2px solid var(--color-primary-text);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--sage);
+            border-color: var(--sage);
+            color: #FFF;
+            transform: translateY(-3px);
+        }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--terra);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--terra); }
+        .eyebrow.center::before { display: none; }
+
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px solid var(--color-border);
+            pointer-events: none;
+        }
+        .deco-circle.dashed { border-style: dashed; border-color: var(--terra); opacity: 0.4; }
+
+        .grain::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+        html[data-theme='dark'] .grain::after { mix-blend-mode: screen; opacity: 0.08; }
+
+        /* Service image container */
+        .service-img-wrap {
+            height: 14rem;
+            overflow: hidden;
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+            background: var(--color-hover);
+        }
+        .service-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .group:hover .service-img-wrap img { transform: scale(1.08); }
+
+        @media (max-width: 1400px) {
+            .nav-link { font-size: 0.66rem; padding: 0.45rem 0.55rem; letter-spacing: 0.1em; }
+        }
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; transform: none; display: none; opacity: 1; visibility: visible; box-shadow: none; border: none; padding-left: 1rem; }
+            .dropdown-menu::before { display: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        #mobile-drawer { transition: all 0.3s ease; }
+        #drawer-panel { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+        .drawer-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .drawer-link:hover, .drawer-link.active { background: var(--terra-soft); color: var(--terra); padding-left: 1.75rem; }
+
+        #main-footer { background: var(--band-bg); color: var(--band-text); }
+        #main-footer .brand-name { color: var(--band-text); }
+        #main-footer .brand-name em { color: var(--terra); }
+        #main-footer .brand-sub { color: rgba(245, 239, 230, 0.5); }
+        #main-footer .brand-mark { background: var(--terra); color: #FFF; }
+        #main-footer .footer-heading {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--terra);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+        #main-footer .footer-link { color: rgba(245, 239, 230, 0.7); transition: all 0.2s ease; }
+        #main-footer .footer-link:hover { color: var(--terra); padding-left: 6px; }
+
+        .header-spacer { height: 90px; }
+        @media (max-width: 640px) { .header-spacer { height: 82px; } }
+    
+        .hero-bg {
+            background-image: linear-gradient(rgba(245, 239, 230, 0.9), rgba(245, 239, 230, 0.9)), url('assets/1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        html[data-theme='dark'] .hero-bg {
+            background-image: linear-gradient(rgba(15, 13, 10, 0.9), rgba(15, 13, 10, 0.9)), url('assets/1.jpg');
+        }
+</style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+<!-- ══════════ NAVBAR ══════════ -->
+<header id="main-header">
+<nav class="px-3 sm:px-4 py-2.5 flex items-center justify-between gap-3">
+<a class="brand-logo shrink-0" href="index.html">
+<div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
+<div class="brand-text">
+<span class="brand-name">Lum<em>ière</em></span>
+<span class="brand-sub">Local Salon</span>
+</div>
+</a>
+<div class="hidden xl:flex items-center gap-0.5 flex-1 justify-center">
+<div class="dropdown-wrapper">
+<button class="nav-link active">
+                        Home <i class="fa-solid fa-chevron-down text-[8px] opacity-50"></i>
+</button>
+<div class="dropdown-menu">
+<a href="index.html">Home 1</a>
+<a href="home2.html">Home 2</a>
+</div>
+</div>
+<a class="nav-link" href="about.html">About</a>
+<a class="nav-link" href="services.html">Services</a>
+<a class="nav-link" href="pricing.html">Pricing</a>
+<a class="nav-link" href="gallery.html">Gallery</a>
+<a class="nav-link" href="offers.html">Offers</a>
+<a class="nav-link" href="testimonials.html">Reviews</a>
+<a class="nav-link" href="tips.html">Tips</a>
+<a class="nav-link" href="contact.html">Contact</a>
+</div>
+<div class="hidden xl:flex items-center gap-1.5 shrink-0">
+<button class="nav-icon-btn" id="theme-toggle" title="Theme">
+<svg class="w-4 h-4 light-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="w-4 h-4 dark-icon hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="nav-icon-btn" id="lang-icon" title="Direction">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<a class="nav-cta" href="contact.html">
+<i class="fa-solid fa-arrow-right -rotate-45"></i> Book
+                </a>
+</div>
+<div class="xl:hidden flex items-center">
+<button class="nav-icon-btn" id="mobile-open">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</nav>
+</header>
+<div class="header-spacer"></div>
+<!-- ══════════ MAIN ══════════ -->
+<main class="flex-grow">
+<!-- HERO -->
+<section class="relative px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto pt-24 lg:pt-32 pb-16 lg:pb-24 min-h-[calc(100vh-90px)] flex flex-col justify-center lg:justify-start hero-bg" ><div class="deco-circle dashed" style="width: 180px; height: 180px; top: 10%; left: 4%;"></div><div class="deco-circle" style="width: 100px; height: 100px; bottom: 8%; right: 6%;"></div><div class="eyebrow mx-auto mb-8" style="display: inline-flex;">Est. 2018 · Bandra West</div><h1 class="mx-auto text-center text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-primary-text max-w-4xl mb-6">A quiet <span class="italic" style="color: var(--terra);">ritual</span> of self-care.</h1><p class="mx-auto text-center text-secondary-text text-lg lg:text-xl max-w-lg leading-relaxed max-w-2xl mb-12">
+                Lumiere is a small-batch salon where every treatment is composed with intention — hair, skin, and makeup, shaped around you.
+            </p><div class="flex flex-wrap gap-4 justify-center mx-auto">
+<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="contact.html">
+<i class="fa-solid fa-calendar-check"></i> Book a Session
+                </a>
+<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="services.html">
+<i class="fa-solid fa-arrow-right"></i> View Menu
+                </a>
+</div>
+            </section>
+<!-- SERVICES -->
+<section class="py-24 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<div class="eyebrow mb-4">Chapter — Services</div>
+<h2 class="text-4xl md:text-5xl text-primary-text leading-tight max-w-xl">
+                        Curated treatments, <span class="italic" style="color: var(--terra);">composed</span> for you.
+                    </h2>
+</div>
+<a class="text-sm font-bold uppercase tracking-widest text-accent hover:underline whitespace-nowrap" href="services.html">
+                    View Full Menu →
+                </a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Service 01 -->
+    <article class="group relative bg-cream rounded-3xl overflow-hidden border border-border hover:border-[var(--terra)] transition-all duration-500 p-8 flex flex-col h-full">
+        <h3 class="text-2xl mb-3 text-primary-text">Hair Studio</h3>
+        <p class="text-secondary-text mb-8 leading-relaxed flex-grow">Precision cuts, colour work, keratin, and slow deep-conditioning rituals.</p>
+        <div class="flex items-center justify-between mt-auto pt-6 border-t border-border">
+            <span class="text-xs uppercase tracking-widest text-secondary-text">From &#8377;800</span>
+            <a class="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-[var(--terra)] group-hover:border-[var(--terra)] group-hover:text-[var(--paper)] transition-all" href="services.html">
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </article>
+    <!-- Service 02 -->
+    <article class="group relative bg-cream rounded-3xl overflow-hidden border border-border hover:border-[var(--terra)] transition-all duration-500 p-8 flex flex-col h-full">
+        <h3 class="text-2xl mb-3 text-primary-text">Skin Rituals</h3>
+        <p class="text-secondary-text mb-8 leading-relaxed flex-grow">Facials, clean-ups, and anti-ageing therapies that let your skin breathe.</p>
+        <div class="flex items-center justify-between mt-auto pt-6 border-t border-border">
+            <span class="text-xs uppercase tracking-widest text-secondary-text">From &#8377;1,200</span>
+            <a class="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-[var(--terra)] group-hover:border-[var(--terra)] group-hover:text-[var(--paper)] transition-all" href="services.html">
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </article>
+    <!-- Service 03 -->
+    <article class="group relative bg-cream rounded-3xl overflow-hidden border border-border hover:border-[var(--terra)] transition-all duration-500 p-8 flex flex-col h-full">
+        <h3 class="text-2xl mb-3 text-primary-text">Makeup Artistry</h3>
+        <p class="text-secondary-text mb-8 leading-relaxed flex-grow">Bridal, editorial, and evening looks with long-wear premium products.</p>
+        <div class="flex items-center justify-between mt-auto pt-6 border-t border-border">
+            <span class="text-xs uppercase tracking-widest text-secondary-text">From &#8377;2,500</span>
+            <a class="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-[var(--terra)] group-hover:border-[var(--terra)] group-hover:text-[var(--paper)] transition-all" href="services.html">
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </article>
+    <!-- Service 04 -->
+    <article class="group relative bg-cream rounded-3xl overflow-hidden border border-border hover:border-[var(--terra)] transition-all duration-500 p-8 flex flex-col h-full">
+        <h3 class="text-2xl mb-3 text-primary-text">Nail Bar</h3>
+        <p class="text-secondary-text mb-8 leading-relaxed flex-grow">Extensions, gel polish, and classic manicures with safe, non-toxic products.</p>
+        <div class="flex items-center justify-between mt-auto pt-6 border-t border-border">
+            <span class="text-xs uppercase tracking-widest text-secondary-text">From &#8377;600</span>
+            <a class="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-[var(--terra)] group-hover:border-[var(--terra)] group-hover:text-[var(--paper)] transition-all" href="services.html">
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </article>
+    <!-- Service 05 -->
+    <article class="group relative bg-cream rounded-3xl overflow-hidden border border-border hover:border-[var(--terra)] transition-all duration-500 p-8 flex flex-col h-full">
+        <h3 class="text-2xl mb-3 text-primary-text">Body & Spa</h3>
+        <p class="text-secondary-text mb-8 leading-relaxed flex-grow">Deep tissue massage, body polishing, and reflexology to melt away stress.</p>
+        <div class="flex items-center justify-between mt-auto pt-6 border-t border-border">
+            <span class="text-xs uppercase tracking-widest text-secondary-text">From &#8377;1,800</span>
+            <a class="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-[var(--terra)] group-hover:border-[var(--terra)] group-hover:text-[var(--paper)] transition-all" href="services.html">
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </article>
+    <!-- Service 06 -->
+    <article class="group relative bg-cream rounded-3xl overflow-hidden border border-border hover:border-[var(--terra)] transition-all duration-500 p-8 flex flex-col h-full">
+        <h3 class="text-2xl mb-3 text-primary-text">Bridal Suite</h3>
+        <p class="text-secondary-text mb-8 leading-relaxed flex-grow">Comprehensive pre-bridal packages, day-of styling, and draping services.</p>
+        <div class="flex items-center justify-between mt-auto pt-6 border-t border-border">
+            <span class="text-xs uppercase tracking-widest text-secondary-text">From &#8377;15,000</span>
+            <a class="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-[var(--terra)] group-hover:border-[var(--terra)] group-hover:text-[var(--paper)] transition-all" href="services.html">
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </article>
+</div>
+</section>
+<!-- PHILOSOPHY -->
+<section class="py-24 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-[2.5rem] overflow-hidden border border-border">
+<div class="bg-terra-soft p-12 md:p-16 flex flex-col justify-center">
+<div class="eyebrow mb-6">Chapter — Philosophy</div>
+<blockquote class="font-display text-3xl md:text-4xl leading-tight text-primary-text italic">
+                        "We don't rush beauty.<br/>We let it unfold — one careful, quiet detail at a time."
+                    </blockquote>
+<div class="mt-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold text-sm">L</div>
+<div>
+<div class="font-bold text-primary-text text-sm">Lea Moreau</div>
+<div class="text-xs text-secondary-text">Founder &amp; Lead Stylist</div>
+</div>
+</div>
+</div>
+<div class="bg-sage-soft p-12 md:p-16 grid grid-cols-2 gap-8 items-center">
+<div class="text-center">
+<div class="font-display text-5xl text-primary-text mb-2">8<span class="text-accent">k</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text">Happy Clients</div>
+</div>
+<div class="text-center">
+<div class="font-display text-5xl text-primary-text mb-2">12</div>
+<div class="text-xs uppercase tracking-widest text-secondary-text">Specialists</div>
+</div>
+<div class="text-center">
+<div class="font-display text-5xl text-primary-text mb-2">7<span class="text-accent">y</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text">Experience</div>
+</div>
+<div class="text-center">
+<div class="font-display text-5xl text-primary-text mb-2">4.9</div>
+<div class="text-xs uppercase tracking-widest text-secondary-text">Avg Rating</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TESTIMONIAL -->
+<section class="py-20 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto">
+<div class="text-center max-w-4xl mx-auto">
+<div class="eyebrow mb-6" style="display: inline-flex;">Chapter — Voices</div>
+<i class="fa-solid fa-quote-left text-4xl mb-6 block" style="color: var(--terra);"></i>
+<p class="font-display text-3xl md:text-4xl leading-snug text-primary-text italic mb-8">
+                    "Lumiere feels less like a salon and more like a sanctuary. I always leave feeling more like myself."
+                </p>
+<div class="flex items-center justify-center gap-4">
+<!-- Avatar — assets/5.jpg -->
+<img alt="Ananya Rao" class="w-12 h-12 rounded-full object-cover border-2 border-border" src="assets/5.jpg"/>
+<div class="text-left">
+<div class="font-bold text-primary-text">Ananya Rao</div>
+<div class="text-xs text-secondary-text">Regular · 2 years</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA — assets/6.jpg -->
+<section class="py-12 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto mb-16">
+<div class="rounded-[2.5rem] overflow-hidden grid grid-cols-1 md:grid-cols-2 border border-border bg-cream">
+<div class="p-12 md:p-16">
+<div class="eyebrow mb-6">Chapter — Visit</div>
+<h2 class="text-4xl md:text-5xl text-primary-text leading-tight mb-6">
+                        Come sit <span class="italic" style="color: var(--terra);">awhile.</span>
+</h2>
+<p class="text-secondary-text text-lg mb-8 leading-relaxed">
+                        Reserve your ritual — whether it's a quick trim or a full-day bridal session, we'll make space for you.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="contact.html">
+<i class="fa-solid fa-calendar-check"></i> Book Appointment
+                        </a>
+<a class="btn-outline px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="tel:+18005550199">
+<i class="fa-solid fa-phone"></i> Call Us
+                        </a>
+</div>
+</div>
+<div class="relative min-h-[280px] overflow-hidden">
+<img alt="Lumiere salon" class="absolute inset-0 w-full h-full object-cover" src="assets/6.jpg"/>
+</div>
+</div>
+</section>
+<!-- ▪ ADDITIONAL SECTION ▪ -->
+<section class="py-16 md:py-24 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto text-center">
+<div class="max-w-3xl mx-auto space-y-6">
+<div class="eyebrow mx-auto justify-center">Our Commitment</div>
+<h2 class="text-4xl md:text-5xl font-display leading-tight text-primary-text">
+                    Pure ingredients.<br/>
+<span class="italic" style="color: var(--terra);">No compromises.</span>
+</h2>
+<p class="text-secondary-text text-lg leading-relaxed">
+                    We believe in honest products and careful hands. Our treatments are formulated with botanical extracts and minimal synthetics, designed to nourish you from the outside in. We don't rush, we don't upsell, we just take care of you.
+                </p>
+</div>
+</section>
+</main>
+<!-- ══════════ MOBILE DRAWER ══════════ -->
+<!-- FIX: Added xl:hidden to the parent container so it doesn't show on desktop -->
+<div class="fixed inset-0 z-[70] pointer-events-none xl:hidden" id="mobile-drawer">
+<div class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none" id="drawer-backdrop"></div>
+<div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-background shadow-2xl overflow-y-auto transform translate-x-full" id="drawer-panel">
+<div class="p-6 border-b border-border flex justify-between items-center">
+<a class="brand-logo" href="index.html" style="padding-left: 0;">
+<div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
+<div class="brand-text">
+<span class="brand-name">Lum<em>ière</em></span>
+<span class="brand-sub">Local Salon</span>
+</div>
+</a>
+<button class="nav-icon-btn" id="mobile-close">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<nav>
+<div>
+<button class="drawer-link w-full" id="mobile-homes-toggle">
+<span>Home</span>
+<svg class="w-3.5 h-3.5 transition-transform duration-200" fill="none" id="homes-icon" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden bg-hover" id="mobile-homes-menu">
+<a class="drawer-link !py-3 !pl-8 !text-sm" href="index.html">Home 1</a>
+<a class="drawer-link !py-3 !pl-8 !text-sm" href="home2.html">Home 2</a>
+</div>
+</div>
+<a class="drawer-link" href="about.html">About Us</a>
+<a class="drawer-link" href="services.html">Services</a>
+<a class="drawer-link" href="pricing.html">Pricing</a>
+<a class="drawer-link" href="gallery.html">Gallery</a>
+<a class="drawer-link" href="offers.html">Offers</a>
+<a class="drawer-link" href="testimonials.html">Testimonials</a>
+<a class="drawer-link" href="tips.html">Beauty Tips</a>
+<a class="drawer-link" href="contact.html">Contact</a>
+</nav>
+<div class="p-6 flex justify-around border-t border-border mt-4">
+<button class="flex flex-col items-center gap-1 text-xs" id="mobile-lang-icon-drawer" style="color: var(--color-secondary-text);">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                    RTL
+                </button>
+<button class="flex flex-col items-center gap-1 text-xs" id="drawer-theme-toggle" style="color: var(--color-secondary-text);">
+<svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                    Theme
+                </button>
+</div>
+<div class="px-6 pb-8">
+<a class="block w-full btn-primary text-center py-3 rounded-full text-xs font-bold uppercase tracking-widest" href="contact.html">Book Now</a>
+</div>
+</div>
+</div>
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="pt-20" id="main-footer">
+<div class="container mx-auto px-6 lg:px-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b" style="border-color: rgba(245, 239, 230, 0.1);">
+<div class="lg:col-span-2">
+<a class="brand-logo mb-6" href="index.html" style="padding-left: 0;">
+<div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
+<div class="brand-text">
+<span class="brand-name">Lum<em>ière</em></span>
+<span class="brand-sub">Local Salon</span>
+</div>
+</a>
+<p class="text-base leading-relaxed max-w-sm" style="color: rgba(245, 239, 230, 0.65);">
+                        A quiet studio for hair, skin, and makeup — where beauty is composed, not rushed.
+                    </p>
+<div class="flex gap-3 mt-8">
+<a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" href="#" style="background: rgba(245, 239, 230, 0.08); color: var(--band-text);"><i class="fab fa-facebook-f text-sm"></i></a>
+<a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" href="#" style="background: rgba(245, 239, 230, 0.08); color: var(--band-text);"><i class="fab fa-instagram text-sm"></i></a>
+<a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" href="#" style="background: rgba(245, 239, 230, 0.08); color: var(--band-text);"><i class="fab fa-whatsapp text-sm"></i></a>
+</div>
+</div>
+<div>
+<h4 class="footer-heading">Quick Links</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="footer-link" href="about.html">About Us</a></li>
+<li><a class="footer-link" href="services.html">Services</a></li>
+<li><a class="footer-link" href="pricing.html">Pricing</a></li>
+<li><a class="footer-link" href="gallery.html">Gallery</a></li>
+<li><a class="footer-link" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-heading">Visit Us</h4>
+<ul class="space-y-4 text-sm" style="color: rgba(245, 239, 230, 0.7);">
+<li class="flex items-start gap-3"><i class="fa-solid fa-location-dot mt-1 w-4" style="color: var(--terra);"></i><span>12 Rose Lane, Bandra West,<br/>Mumbai 400050</span></li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-phone w-4" style="color: var(--terra);"></i><a class="footer-link" href="tel:+18005550199">+1 (800) 555-0199</a></li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-envelope w-4" style="color: var(--terra);"></i><a class="footer-link" href="mailto:hello@lumiere.com">hello@lumiere.com</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-heading">Newsletter</h4>
+<div class="flex flex-col space-y-3">
+<input class="p-3.5 text-sm rounded-full focus:outline-none" placeholder="Email address" style="background: rgba(245, 239, 230, 0.06); border: 1px solid rgba(245, 239, 230, 0.12); color: var(--band-text);" type="email"/>
+<button class="btn-primary py-3 rounded-full text-xs font-bold uppercase tracking-widest"  style="background: var(--terra); border-color: var(--terra); color: #FFF;">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="py-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs" style="color: rgba(245, 239, 230, 0.4);">
+<div>© 2026 Lumiere · Local Salon. All rights reserved.</div>
+<div class="flex gap-6">
+<a class="hover:opacity-80" href="#">Privacy</a>
+<a class="hover:opacity-80" href="#">Terms</a>
+<a class="hover:opacity-80" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            const drawer = document.getElementById('mobile-drawer');
+            const panel = document.getElementById('drawer-panel');
+            const backdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                drawer.classList.remove('pointer-events-none');
+                panel.classList.remove('translate-x-full');
+                backdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                panel.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { drawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 350);
+            };
+            document.getElementById('mobile-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-close').addEventListener('click', closeDrawer);
+            backdrop.addEventListener('click', closeDrawer);
+
+            document.getElementById('mobile-homes-toggle')?.addEventListener('click', () => {
+                document.getElementById('mobile-homes-menu').classList.toggle('hidden');
+                document.getElementById('homes-icon').classList.toggle('rotate-180');
+            });
+
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn?.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn?.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link, .drawer-link').forEach(link => {
+                if (link.getAttribute('href') === currentPath) link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

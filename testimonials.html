@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+
+<html data-theme="light" dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="assets/fav.png" rel="icon" type="image/jpeg"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<title>Reviews · LUMIERE Local Salon</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+        :root, html[data-theme='light'] {
+            --terra: #C6705C;
+            --terra-soft: #F0DDD6;
+            --sage: #7A8B6F;
+            --sage-soft: #E3E8DD;
+            --cream: #F5EFE6;
+            --paper: #FBF7F1;
+            --ink: #2A2522;
+            --muted: #8A7F76;
+            --line: #E5DCD1;
+
+            --band-bg: #2A2522;
+            --band-text: #F5EFE6;
+            --inverse-bg: #2A2522;
+            --inverse-text: #F5EFE6;
+            --gold: #E6B17E;
+
+            --color-background: var(--paper);
+            --color-primary-text: var(--ink);
+            --color-secondary-text: var(--muted);
+            --color-accent: var(--terra);
+            --color-accent-light: var(--terra-soft);
+            --color-border: var(--line);
+            --color-hover: #EFE7DC;
+            --color-nav-bg: var(--cream);
+            --color-nav-text: var(--ink);
+        }
+        html[data-theme='dark'] {
+            --terra: #E08A75;
+            --terra-soft: #3D231C;
+            --sage: #9EAF92;
+            --sage-soft: #2A3226;
+            --cream: #1F1B18;
+            --paper: #17140F;
+            --ink: #F5EFE6;
+            --muted: #A89B90;
+            --line: #322C26;
+
+            --band-bg: #0F0D0A;
+            --band-text: #F5EFE6;
+            --inverse-bg: #0F0D0A;
+            --inverse-text: #F5EFE6;
+            --gold: #E6B17E;
+
+            --color-background: var(--paper);
+            --color-primary-text: var(--ink);
+            --color-secondary-text: var(--muted);
+            --color-accent: var(--terra);
+            --color-accent-light: var(--terra-soft);
+            --color-border: var(--line);
+            --color-hover: #262019;
+            --color-nav-bg: #1F1B18;
+            --color-nav-text: #F5EFE6;
+        }
+
+        * { -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        .font-display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+        h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-sage { color: var(--sage); }
+        .text-band { color: var(--band-text); }
+        .text-inverse { color: var(--inverse-text); }
+        .text-gold { color: var(--gold); }
+
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .bg-sage { background-color: var(--sage); }
+        .bg-terra-soft { background-color: var(--terra-soft); }
+        .bg-sage-soft { background-color: var(--sage-soft); }
+        .bg-cream { background-color: var(--cream); }
+        .bg-band { background-color: var(--band-bg); }
+        .bg-inverse { background-color: var(--inverse-bg); }
+
+        .border-border { border-color: var(--color-border); }
+        .border-sage { border-color: var(--sage); }
+        .border-accent { border-color: var(--color-accent); }
+
+        /* NAVBAR */
+        #main-header {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 1480px;
+            z-index: 50;
+            background: var(--color-nav-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 100px;
+            box-shadow: 0 12px 40px -12px rgba(42, 37, 34, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        html[data-theme='dark'] #main-header { box-shadow: 0 12px 40px -12px rgba(0,0,0,0.6); }
+        #main-header::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 40%;
+            background: linear-gradient(180deg, var(--terra) 0%, var(--sage) 100%);
+            border-radius: 4px;
+        }
+        @media (max-width: 1280px) { #main-header::before { display: none; } }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-decoration: none;
+            padding-left: 1.5rem;
+        }
+        @media (max-width: 1280px) { .brand-logo { padding-left: 0; } }
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--terra);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            font-size: 1rem;
+            position: relative;
+            flex-shrink: 0;
+            transition: transform 0.4s ease;
+        }
+        .brand-logo:hover .brand-mark { transform: rotate(-12deg) scale(1.08); }
+        .brand-mark::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            border: 1.5px dashed var(--terra);
+            opacity: 0.7;
+        }
+        .brand-text { display: flex; flex-direction: column; line-height: 1; }
+        .brand-name {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: 0.02em;
+            color: var(--color-nav-text);
+        }
+        .brand-name em { font-style: italic; color: var(--terra); }
+        .brand-sub {
+            font-size: 0.55rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--color-secondary-text);
+            margin-top: 3px;
+            font-weight: 700;
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 0.7rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-nav-text);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .nav-link:hover { color: var(--terra); }
+        .nav-link.active { color: var(--terra); }
+        .nav-link.active::before { content: '•';
+            position: absolute;
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--terra);
+            font-size: 1.1rem;
+        }
+
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: var(--color-nav-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            box-shadow: 0 24px 48px -16px rgba(42, 37, 34, 0.25);
+            min-width: 200px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.28s ease;
+            padding: 0.5rem;
+            overflow: hidden;
+        }
+        html[data-theme='dark'] .dropdown-menu { box-shadow: 0 24px 48px -16px rgba(0,0,0,0.7); }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--terra), var(--sage));
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.6rem 0.9rem;
+            color: var(--color-nav-text);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover { background: var(--terra-soft); color: var(--terra); padding-left: 1.3rem; }
+
+        .nav-icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-nav-text);
+            transition: all 0.25s ease;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .nav-icon-btn:hover {
+            background: var(--terra);
+            color: #FFF;
+            border-color: var(--terra);
+            transform: rotate(8deg);
+        }
+
+        .nav-cta {
+            background: var(--color-nav-text);
+            color: var(--color-nav-bg);
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.65rem 1.3rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            border: 1.5px solid var(--color-nav-text);
+        }
+        .nav-cta:hover {
+            background: var(--terra);
+            border-color: var(--terra);
+            color: #FFF;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px -6px rgba(198, 112, 92, 0.5);
+        }
+
+        .btn-primary {
+            background: var(--color-nav-text);
+            color: var(--color-nav-bg);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid var(--color-nav-text);
+        }
+        .btn-primary:hover {
+            background: var(--terra);
+            border-color: var(--terra);
+            color: #FFF;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 28px -8px rgba(198, 112, 92, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-primary-text);
+            border: 2px solid var(--color-primary-text);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--sage);
+            border-color: var(--sage);
+            color: #FFF;
+            transform: translateY(-3px);
+        }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--terra);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--terra); }
+        .eyebrow.center::before { display: none; }
+
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px solid var(--color-border);
+            pointer-events: none;
+        }
+        .deco-circle.dashed { border-style: dashed; border-color: var(--terra); opacity: 0.4; }
+
+        .grain::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+        html[data-theme='dark'] .grain::after { mix-blend-mode: screen; opacity: 0.08; }
+
+        /* Star rating */
+        .stars { display: inline-flex; gap: 3px; color: var(--gold); }
+
+        /* Rating summary bar */
+        .rating-bar {
+            height: 8px;
+            border-radius: 9999px;
+            background: var(--color-border);
+            overflow: hidden;
+        }
+        .rating-fill {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 9999px;
+            transition: width 0.6s ease;
+        }
+
+        /* Review card */
+        .review-card {
+            position: relative;
+            border-radius: 1.75rem;
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+            padding: 2rem;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 48px -16px rgba(42, 37, 34, 0.15);
+        }
+        html[data-theme='dark'] .review-card:hover { box-shadow: 0 24px 48px -16px rgba(0,0,0,0.6); }
+        .review-card.dark { background: var(--inverse-bg); border-color: var(--inverse-bg); color: var(--inverse-text); }
+        .review-card.dark .review-name { color: var(--inverse-text); }
+        .review-card.dark .review-text { color: rgba(245,239,230,0.85); }
+        .review-card.dark .review-meta { color: rgba(245,239,230,0.6); }
+
+        /* Filter tabs */
+        .filter-tab {
+            padding: 0.55rem 1.2rem;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-secondary-text);
+            border: 1px solid var(--color-border);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+        .filter-tab:hover { color: var(--terra); border-color: var(--terra); }
+        .filter-tab.active {
+            background: var(--terra);
+            color: #FFF;
+            border-color: var(--terra);
+            box-shadow: 0 8px 20px -6px rgba(198, 112, 92, 0.5);
+        }
+
+        /* Video review */
+        .video-review {
+            position: relative;
+            border-radius: 1.75rem;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            aspect-ratio: 4/5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .video-review:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(42, 37, 34, 0.25); }
+        .video-review .play-btn-small {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.95);
+            color: var(--terra);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            z-index: 3;
+        }
+        .video-review:hover .play-btn-small { transform: scale(1.1); }
+        .video-review::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(42, 37, 34, 0.85) 100%);
+        }
+        .video-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 3;
+            color: #FFF;
+        }
+
+        /* Form */
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.85rem;
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-primary-text);
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--terra);
+            box-shadow: 0 0 0 3px rgba(198, 112, 92, 0.15);
+        }
+        .form-textarea { resize: vertical; min-height: 120px; }
+
+        /* Interactive star selector */
+        .star-selector {
+            display: inline-flex;
+            gap: 6px;
+        }
+        .star-selector button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: var(--color-border);
+            transition: all 0.2s;
+            padding: 0;
+        }
+        .star-selector button:hover,
+        .star-selector button.active { color: var(--gold); transform: scale(1.05); }
+
+        @media (max-width: 1400px) {
+            .nav-link { font-size: 0.66rem; padding: 0.45rem 0.55rem; letter-spacing: 0.1em; }
+        }
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; transform: none; display: none; opacity: 1; visibility: visible; box-shadow: none; border: none; padding-left: 1rem; }
+            .dropdown-menu::before { display: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        #mobile-drawer { transition: all 0.3s ease; }
+        #drawer-panel { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+        .drawer-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .drawer-link:hover, .drawer-link.active { background: var(--terra-soft); color: var(--terra); padding-left: 1.75rem; }
+
+        #main-footer { background: var(--band-bg); color: var(--band-text); }
+        #main-footer .brand-name { color: var(--band-text); }
+        #main-footer .brand-name em { color: var(--terra); }
+        #main-footer .brand-sub { color: rgba(245, 239, 230, 0.5); }
+        #main-footer .brand-mark { background: var(--terra); color: #FFF; }
+        #main-footer .footer-heading {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--terra);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+        #main-footer .footer-link { color: rgba(245, 239, 230, 0.7); transition: all 0.2s ease; }
+        #main-footer .footer-link:hover { color: var(--terra); padding-left: 6px; }
+
+        .header-spacer { height: 90px; }
+        @media (max-width: 640px) { .header-spacer { height: 82px; } }
+    
+        .hero-bg {
+            background-image: linear-gradient(rgba(245, 239, 230, 0.9), rgba(245, 239, 230, 0.9)), url('assets/1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        html[data-theme='dark'] .hero-bg {
+            background-image: linear-gradient(rgba(15, 13, 10, 0.9), rgba(15, 13, 10, 0.9)), url('assets/1.jpg');
+        }
+</style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+<!-- ══════════ NAVBAR ══════════ -->
+<header id="main-header">
+<nav class="px-3 sm:px-4 py-2.5 flex items-center justify-between gap-3">
+<a class="brand-logo shrink-0" href="index.html">
+<div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
+<div class="brand-text">
+<span class="brand-name">Lum<em>ière</em></span>
+<span class="brand-sub">Local Salon</span>
+</div>
+</a>
+<div class="hidden xl:flex items-center gap-0.5 flex-1 justify-center">
+<div class="dropdown-wrapper">
+<button class="nav-link">
+                        Home <i class="fa-solid fa-chevron-down text-[8px] opacity-50"></i>
+</button>
+<div class="dropdown-menu">
+<a href="index.html">Home 1</a>
+<a href="home2.html">Home 2</a>
+</div>
+</div>
+<a class="nav-link" href="about.html">About</a>
+<a class="nav-link" href="services.html">Services</a>
+<a class="nav-link" href="pricing.html">Pricing</a>
+<a class="nav-link" href="gallery.html">Gallery</a>
+<a class="nav-link" href="offers.html">Offers</a>
+<a class="nav-link" href="testimonials.html">Reviews</a>
+<a class="nav-link" href="tips.html">Tips</a>
+<a class="nav-link" href="contact.html">Contact</a>
+</div>
+<div class="hidden xl:flex items-center gap-1.5 shrink-0">
+<button class="nav-icon-btn" id="theme-toggle" title="Theme">
+<svg class="w-4 h-4 light-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="w-4 h-4 dark-icon hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="nav-icon-btn" id="lang-icon" title="Direction">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<a class="nav-cta" href="contact.html">
+<i class="fa-solid fa-arrow-right -rotate-45"></i> Book
+                </a>
+</div>
+<div class="xl:hidden flex items-center">
+<button class="nav-icon-btn" id="mobile-open">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</nav>
+</header>
+<div class="header-spacer"></div>
+<!-- ══════════ MAIN ══════════ -->
+<main class="flex-grow">
+<!-- ═══ REVIEWS HERO ═══ -->
+<section class="relative px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto pt-24 lg:pt-32 pb-16 lg:pb-24 min-h-[calc(100vh-90px)] flex flex-col justify-center lg:justify-start hero-bg" ><div class="deco-circle dashed" style="width: 180px; height: 180px; top: 10%; left: 4%;"></div><div class="deco-circle" style="width: 100px; height: 100px; bottom: 8%; right: 6%;"></div><div class="eyebrow mx-auto mb-6" style="display: inline-flex;">Reviews · 300+ Ratings</div><h1 class="mx-auto text-center text-5xl md:text-6xl lg:text-7xl leading-[0.98] text-primary-text mb-6 max-w-4xl">Kind words, <span class="italic" style="color: var(--terra);">honest thoughts.</span></h1><p class="mx-auto text-center text-secondary-text text-lg lg:text-xl leading-relaxed mb-8 max-w-2xl mb-12">
+                        Real reviews from real clients — unfiltered, unedited. Read what people say about their time at Lumiere.
+                    </p><div class="flex flex-wrap gap-4 justify-center mx-auto">
+<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="#review-form">
+<i class="fa-solid fa-pen"></i> Leave a Review
+                        </a>
+<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="#review-grid">
+<i class="fa-solid fa-comments"></i> Read Reviews
+                        </a>
+</div>
+            </section>
+<!-- ═══ FEATURED SPOTLIGHT REVIEW ═══ -->
+<section class="py-20 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto">
+<div class="rounded-[2.5rem] overflow-hidden grid grid-cols-1 lg:grid-cols-2 border border-border bg-inverse">
+<div class="p-10 md:p-16 flex flex-col justify-center">
+<div class="eyebrow mb-5" style="color: var(--terra);">Featured Review</div>
+<div class="stars mb-5">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<blockquote class="font-display italic text-2xl md:text-3xl leading-snug mb-8 text-inverse">
+                        "I've been to salons in Paris, London, and Dubai — and Lumiere is the first one that felt like home. The attention to detail is unmatched, and Lea truly listens."
+                    </blockquote>
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg" style="background: var(--terra); color: #FFF;">RS</div>
+<div>
+<div class="font-bold text-inverse">Riya Sinha</div>
+<div class="text-xs" style="color: rgba(245,239,230,0.6);">Regular · 3 years · Balayage &amp; Facial</div>
+</div>
+</div>
+</div>
+<div class="relative min-h-[320px] bg-sage-soft grain flex items-center justify-center p-10">
+<div class="text-center">
+<i class="fa-solid fa-quote-left text-[7rem] mb-4" style="color: var(--terra); opacity: 0.5;"></i>
+<div class="font-display italic text-2xl text-primary-text">"Like home."</div>
+</div>
+<div class="deco-circle dashed" style="width: 160px; height: 160px; top: 20px; left: 20px;"></div>
+</div>
+</div>
+</section>
+<!-- ═══ FILTERABLE REVIEWS GRID ═══ -->
+<section class="py-20 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto bg-hover border-y border-border" id="review-grid">
+<div class="text-center mb-12">
+<div class="eyebrow mb-4" style="display: inline-flex;">All Reviews</div>
+<h2 class="text-4xl md:text-5xl text-primary-text leading-tight max-w-2xl mx-auto mb-3">
+                    Read what <span class="italic" style="color: var(--terra);">clients say.</span>
+</h2>
+<p class="text-secondary-text max-w-xl mx-auto">Filter by service, or browse everything.</p>
+</div>
+<!-- Filter tabs -->
+<div class="flex flex-wrap justify-center gap-2.5 mb-12">
+<button class="filter-tab active" data-filter="all">All</button>
+<button class="filter-tab" data-filter="hair">Hair</button>
+<button class="filter-tab" data-filter="skin">Skin</button>
+<button class="filter-tab" data-filter="makeup">Makeup</button>
+<button class="filter-tab" data-filter="nails">Nails</button>
+<button class="filter-tab" data-filter="spa">Spa</button>
+<button class="filter-tab" data-filter="bridal">Bridal</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="reviewGrid">
+<!-- Review 1 — Hair -->
+<div class="review-card" data-cat="hair">
+<div class="stars mb-4">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="review-text text-primary-text text-base leading-relaxed mb-6 flex-grow">
+                        "Lea transformed my over-processed hair into something I actually love. The balayage is subtle, healthy, and exactly what I asked for."
+                    </p>
+
+</div>
+<!-- Review 2 — Skin (dark) -->
+<div class="review-card dark" data-cat="skin">
+<div class="stars mb-4">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="review-text text-base leading-relaxed mb-6 flex-grow">
+                        "The hydra-facial was a game-changer. My skin felt plump and glowy for over a week. Priya is a magician."
+                    </p>
+
+</div>
+<!-- Review 3 — Makeup -->
+<div class="review-card" data-cat="makeup">
+<div class="stars mb-4">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="review-text text-primary-text text-base leading-relaxed mb-6 flex-grow">
+                        "Nisha did my bridal makeup and it was FLAWLESS. It lasted 14 hours through the ceremony, photos, and reception — didn't budge once."
+                    </p>
+
+</div>
+<!-- Review 4 — Nails -->
+<div class="review-card" data-cat="nails">
+<div class="stars mb-4">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="review-text text-primary-text text-base leading-relaxed mb-6 flex-grow">
+                        "Best gel extensions I've had in Mumbai. Six weeks later and not a single chip. Maya is incredible at nail art."
+                    </p>
+
+</div>
+<!-- Review 5 — Spa (dark) -->
+<div class="review-card dark" data-cat="spa">
+<div class="stars mb-4">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+</div>
+<p class="review-text text-base leading-relaxed mb-6 flex-grow">
+                        "The aroma therapy massage was exactly what I needed after a long work week. Aisha has magic hands. Only wish it was longer!"
+                    </p>
+
+</div>
+<!-- Review 6 — Bridal -->
+<div class="review-card" data-cat="bridal">
+<div class="stars mb-4">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="review-text text-primary-text text-base leading-relaxed mb-6 flex-grow">
+                        "Booked the complete bridal package. From trial to wedding day, everything was organised, calm, and beautiful. Worth every rupee."
+                    </p>
+
+</div>
+</div>
+  </section>
+<!-- ═══ LEAVE A REVIEW FORM ═══ -->
+<section class="py-24 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto bg-hover border-y border-border" id="review-form">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5">
+<div class="eyebrow mb-5">Share Your Experience</div>
+<h2 class="text-4xl md:text-5xl text-primary-text leading-tight mb-6">
+                        Tell us how<br/>
+<span class="italic" style="color: var(--terra);">we did.</span>
+</h2>
+<p class="text-secondary-text leading-relaxed mb-8">
+                        We read every single review — the glowing ones and the critical ones. If something wasn't perfect, we want to know.
+                    </p>
+<div class="bg-terra-soft rounded-[2rem] p-8 border border-border grain relative overflow-hidden">
+<i class="fa-solid fa-quote-left text-[4rem] mb-4 block" style="color: var(--terra); opacity: 0.5;"></i>
+<div class="font-display italic text-xl text-primary-text mb-2">"Feedback is a gift."</div>
+<div class="text-xs uppercase tracking-widest text-secondary-text">— Lea &amp; the team</div>
+</div>
+</div>
+<div class="lg:col-span-7">
+<form class="bg-background rounded-[2rem] border border-border p-8 md:p-10 space-y-5" onsubmit="event.preventDefault(); alert('Thank you! Your review has been submitted ✨');">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div>
+<label class="block text-xs uppercase tracking-widest text-secondary-text mb-2">Your Name</label>
+<input class="form-input" placeholder="e.g. Ananya S." required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs uppercase tracking-widest text-secondary-text mb-2">Email</label>
+<input class="form-input" placeholder="you@example.com" required="" type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-xs uppercase tracking-widest text-secondary-text mb-2">Service Received</label>
+<select class="form-select" required="">
+<option value="">Select a service</option>
+<option>Hair — Cut &amp; Styling</option>
+<option>Hair — Colour / Balayage</option>
+<option>Hair — Keratin / Smoothening</option>
+<option>Skin — Facial</option>
+<option>Skin — Clean-up</option>
+<option>Makeup — Party</option>
+<option>Makeup — Bridal</option>
+<option>Nails — Manicure / Pedicure</option>
+<option>Nails — Extensions</option>
+<option>Spa — Massage</option>
+<option>Spa — Body Polishing</option>
+<option>Other</option>
+</select>
+</div>
+<div>
+<label class="block text-xs uppercase tracking-widest text-secondary-text mb-2">Your Rating</label>
+<div class="star-selector" id="starSelector">
+<button data-value="1" type="button"><i class="fa-solid fa-star"></i></button>
+<button data-value="2" type="button"><i class="fa-solid fa-star"></i></button>
+<button data-value="3" type="button"><i class="fa-solid fa-star"></i></button>
+<button data-value="4" type="button"><i class="fa-solid fa-star"></i></button>
+<button data-value="5" type="button"><i class="fa-solid fa-star"></i></button>
+</div>
+</div>
+<div>
+<label class="block text-xs uppercase tracking-widest text-secondary-text mb-2">Your Review</label>
+<textarea class="form-textarea" placeholder="Tell us about your experience..." required=""></textarea>
+</div>
+<button class="btn-primary w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-widest" type="submit">
+<i class="fa-solid fa-paper-plane mr-2"></i> Submit Review
+                        </button>
+<p class="text-center text-xs text-secondary-text">
+<i class="fa-solid fa-lock mr-1"></i> Your email won't be published.
+                        </p>
+</form>
+</div>
+</div>
+</section>
+<!-- ═══ CTA ═══ -->
+<section class="py-20 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto">
+<div class="relative bg-terra-soft rounded-[2.5rem] p-12 md:p-20 text-center overflow-hidden border border-border grain">
+<div class="deco-circle dashed" style="width: 200px; height: 200px; top: -50px; right: -50px;"></div>
+<div class="deco-circle" style="width: 120px; height: 120px; bottom: -30px; left: -30px;"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<div class="eyebrow mb-6" style="display: inline-flex;">Come See Us</div>
+<h2 class="text-4xl md:text-5xl text-primary-text leading-tight mb-6">
+                        Join our <span class="italic" style="color: var(--terra);">happy clients.</span>
+</h2>
+<p class="text-secondary-text text-lg mb-10 leading-relaxed">
+                        Book your first session and experience the Lumiere difference for yourself.
+                    </p>
+<div class="flex flex-wrap gap-4 justify-center">
+<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="contact.html">
+<i class="fa-solid fa-calendar-check"></i> Book Appointment
+                        </a>
+<a class="btn-outline px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="services.html">
+<i class="fa-solid fa-scissors"></i> Browse Services
+                        </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ══════════ MOBILE DRAWER ══════════ -->
+<div class="fixed inset-0 z-[70] pointer-events-none" id="mobile-drawer">
+<div class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none" id="drawer-backdrop"></div>
+<div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-background shadow-2xl xl:hidden overflow-y-auto transform translate-x-full" id="drawer-panel">
+<div class="p-6 border-b border-border flex justify-between items-center">
+<a class="brand-logo" href="index.html" style="padding-left: 0;">
+<div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
+<div class="brand-text">
+<span class="brand-name">Lum<em>ière</em></span>
+<span class="brand-sub">Local Salon</span>
+</div>
+</a>
+<button class="nav-icon-btn" id="mobile-close">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<nav>
+<div>
+<button class="drawer-link w-full" id="mobile-homes-toggle">
+<span>Home</span>
+<svg class="w-3.5 h-3.5 transition-transform duration-200" fill="none" id="homes-icon" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden bg-hover" id="mobile-homes-menu">
+<a class="drawer-link !py-3 !pl-8 !text-sm" href="index.html">Home 1</a>
+<a class="drawer-link !py-3 !pl-8 !text-sm" href="home2.html">Home 2</a>
+</div>
+</div>
+<a class="drawer-link" href="about.html">About Us</a>
+<a class="drawer-link" href="services.html">Services</a>
+<a class="drawer-link" href="pricing.html">Pricing</a>
+<a class="drawer-link" href="gallery.html">Gallery</a>
+<a class="drawer-link" href="offers.html">Offers</a>
+<a class="drawer-link" href="testimonials.html">Testimonials</a>
+<a class="drawer-link" href="tips.html">Beauty Tips</a>
+<a class="drawer-link" href="contact.html">Contact</a>
+</nav>
+<div class="p-6 flex justify-around border-t border-border mt-4">
+<button class="flex flex-col items-center gap-1 text-xs" id="mobile-lang-icon-drawer" style="color: var(--color-secondary-text);">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                    RTL
+                </button>
+<button class="flex flex-col items-center gap-1 text-xs" id="drawer-theme-toggle" style="color: var(--color-secondary-text);">
+<svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                    Theme
+                </button>
+</div>
+<div class="px-6 pb-8">
+<a class="block w-full btn-primary text-center py-3 rounded-full text-xs font-bold uppercase tracking-widest" href="contact.html">Book Now</a>
+</div>
+</div>
+</div>
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="pt-20" id="main-footer">
+<div class="container mx-auto px-6 lg:px-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b" style="border-color: rgba(245, 239, 230, 0.1);">
+<div class="lg:col-span-2">
+<a class="brand-logo mb-6" href="index.html" style="padding-left: 0;">
+<div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
+<div class="brand-text">
+<span class="brand-name">Lum<em>ière</em></span>
+<span class="brand-sub">Local Salon</span>
+</div>
+</a>
+<p class="text-base leading-relaxed max-w-sm" style="color: rgba(245, 239, 230, 0.65);">
+                        A quiet studio for hair, skin, and makeup — where beauty is composed, not rushed.
+                    </p>
+<div class="flex gap-3 mt-8">
+<a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" href="#" style="background: rgba(245, 239, 230, 0.08); color: var(--band-text);"><i class="fab fa-facebook-f text-sm"></i></a>
+<a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" href="#" style="background: rgba(245, 239, 230, 0.08); color: var(--band-text);"><i class="fab fa-instagram text-sm"></i></a>
+<a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" href="#" style="background: rgba(245, 239, 230, 0.08); color: var(--band-text);"><i class="fab fa-whatsapp text-sm"></i></a>
+</div>
+</div>
+<div>
+<h4 class="footer-heading">Quick Links</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="footer-link" href="about.html">About Us</a></li>
+<li><a class="footer-link" href="services.html">Services</a></li>
+<li><a class="footer-link" href="pricing.html">Pricing</a></li>
+<li><a class="footer-link" href="gallery.html">Gallery</a></li>
+<li><a class="footer-link" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-heading">Visit Us</h4>
+<ul class="space-y-4 text-sm" style="color: rgba(245, 239, 230, 0.7);">
+<li class="flex items-start gap-3"><i class="fa-solid fa-location-dot mt-1 w-4" style="color: var(--terra);"></i><span>12 Rose Lane, Bandra West,<br/>Mumbai 400050</span></li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-phone w-4" style="color: var(--terra);"></i><a class="footer-link" href="tel:+18005550199">+1 (800) 555-0199</a></li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-envelope w-4" style="color: var(--terra);"></i><a class="footer-link" href="mailto:hello@lumiere.com">hello@lumiere.com</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-heading">Newsletter</h4>
+<div class="flex flex-col space-y-3">
+<input class="p-3.5 text-sm rounded-full focus:outline-none" placeholder="Email address" style="background: rgba(245, 239, 230, 0.06); border: 1px solid rgba(245, 239, 230, 0.12); color: var(--band-text);" type="email"/>
+<button class="btn-primary py-3 rounded-full text-xs font-bold uppercase tracking-widest"  style="background: var(--terra); border-color: var(--terra); color: #FFF;">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="py-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs" style="color: rgba(245, 239, 230, 0.4);">
+<div>© 2026 Lumiere · Local Salon. All rights reserved.</div>
+<div class="flex gap-6">
+<a class="hover:opacity-80" href="#">Privacy</a>
+<a class="hover:opacity-80" href="#">Terms</a>
+<a class="hover:opacity-80" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer
+            const drawer = document.getElementById('mobile-drawer');
+            const panel = document.getElementById('drawer-panel');
+            const backdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                drawer.classList.remove('pointer-events-none');
+                panel.classList.remove('translate-x-full');
+                backdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                panel.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { drawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 350);
+            };
+            document.getElementById('mobile-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-close').addEventListener('click', closeDrawer);
+            backdrop.addEventListener('click', closeDrawer);
+
+            document.getElementById('mobile-homes-toggle')?.addEventListener('click', () => {
+                document.getElementById('mobile-homes-menu').classList.toggle('hidden');
+                document.getElementById('homes-icon').classList.toggle('rotate-180');
+            });
+
+            // Theme
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn?.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            // RTL
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn?.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active nav
+            const currentPath = window.location.pathname.split('/').pop() || 'testimonials.html';
+            document.querySelectorAll('.nav-link, .drawer-link').forEach(link => {
+                if (link.getAttribute('href') === currentPath) link.classList.add('active');
+            });
+
+            // Filter tabs
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const reviews = document.querySelectorAll('#reviewGrid .review-card');
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const filter = tab.dataset.filter;
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    reviews.forEach(r => {
+                        if (filter === 'all' || r.dataset.cat === filter) {
+                            r.style.display = '';
+                        } else {
+                            r.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Star selector
+            const starSelector = document.getElementById('starSelector');
+            let selectedRating = 0;
+            if (starSelector) {
+                const starBtns = starSelector.querySelectorAll('button');
+                starBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        selectedRating = parseInt(btn.dataset.value);
+                        starBtns.forEach(b => {
+                            if (parseInt(b.dataset.value) <= selectedRating) {
+                                b.classList.add('active');
+                            } else {
+                                b.classList.remove('active');
+                            }
+                        });
+                    });
+                    btn.addEventListener('mouseenter', () => {
+                        const val = parseInt(btn.dataset.value);
+                        starBtns.forEach(b => {
+                            if (parseInt(b.dataset.value) <= val) {
+                                b.style.color = 'var(--gold)';
+                            } else {
+                                b.style.color = '';
+                            }
+                        });
+                    });
+                });
+                starSelector.addEventListener('mouseleave', () => {
+                    starBtns.forEach(b => {
+                        b.style.color = '';
+                        if (parseInt(b.dataset.value) <= selectedRating) {
+                            b.style.color = 'var(--gold)';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

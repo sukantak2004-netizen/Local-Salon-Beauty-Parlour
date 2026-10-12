@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+
+<html data-theme="light" dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="assets/fav.png" rel="icon" type="image/jpeg"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<title>Pricing · LUMIERE Local Salon</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+        :root, html[data-theme='light'] {
+            --terra: #C6705C;
+            --terra-soft: #F0DDD6;
+            --sage: #7A8B6F;
+            --sage-soft: #E3E8DD;
+            --cream: #F5EFE6;
+            --paper: #FBF7F1;
+            --ink: #2A2522;
+            --muted: #8A7F76;
+            --line: #E5DCD1;
+
+            --band-bg: #2A2522;
+            --band-text: #F5EFE6;
+            --inverse-bg: #2A2522;
+            --inverse-text: #F5EFE6;
+
+            --color-background: var(--paper);
+            --color-primary-text: var(--ink);
+            --color-secondary-text: var(--muted);
+            --color-accent: var(--terra);
+            --color-accent-light: var(--terra-soft);
+            --color-border: var(--line);
+            --color-hover: #EFE7DC;
+            --color-nav-bg: var(--cream);
+            --color-nav-text: var(--ink);
+        }
+        html[data-theme='dark'] {
+            --terra: #E08A75;
+            --terra-soft: #3D231C;
+            --sage: #9EAF92;
+            --sage-soft: #2A3226;
+            --cream: #1F1B18;
+            --paper: #17140F;
+            --ink: #F5EFE6;
+            --muted: #A89B90;
+            --line: #322C26;
+
+            --band-bg: #0F0D0A;
+            --band-text: #F5EFE6;
+            --inverse-bg: #0F0D0A;
+            --inverse-text: #F5EFE6;
+
+            --color-background: var(--paper);
+            --color-primary-text: var(--ink);
+            --color-secondary-text: var(--muted);
+            --color-accent: var(--terra);
+            --color-accent-light: var(--terra-soft);
+            --color-border: var(--line);
+            --color-hover: #262019;
+            --color-nav-bg: #1F1B18;
+            --color-nav-text: #F5EFE6;
+        }
+
+        * { -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        .font-display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+        h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-sage { color: var(--sage); }
+        .text-band { color: var(--band-text); }
+        .text-inverse { color: var(--inverse-text); }
+
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .bg-sage { background-color: var(--sage); }
+        .bg-terra-soft { background-color: var(--terra-soft); }
+        .bg-sage-soft { background-color: var(--sage-soft); }
+        .bg-cream { background-color: var(--cream); }
+        .bg-band { background-color: var(--band-bg); }
+        .bg-inverse { background-color: var(--inverse-bg); }
+
+        .border-border { border-color: var(--color-border); }
+        .border-sage { border-color: var(--sage); }
+        .border-accent { border-color: var(--color-accent); }
+
+        /* NAVBAR */
+        #main-header {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 1480px;
+            z-index: 50;
+            background: var(--color-nav-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 100px;
+            box-shadow: 0 12px 40px -12px rgba(42, 37, 34, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        html[data-theme='dark'] #main-header { box-shadow: 0 12px 40px -12px rgba(0,0,0,0.6); }
+        #main-header::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 40%;
+            background: linear-gradient(180deg, var(--terra) 0%, var(--sage) 100%);
+            border-radius: 4px;
+        }
+        @media (max-width: 1280px) { #main-header::before { display: none; } }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-decoration: none;
+            padding-left: 1.5rem;
+        }
+        @media (max-width: 1280px) { .brand-logo { padding-left: 0; } }
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--terra);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            font-size: 1rem;
+            position: relative;
+            flex-shrink: 0;
+            transition: transform 0.4s ease;
+        }
+        .brand-logo:hover .brand-mark { transform: rotate(-12deg) scale(1.08); }
+        .brand-mark::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            border: 1.5px dashed var(--terra);
+            opacity: 0.7;
+        }
+        .brand-text { display: flex; flex-direction: column; line-height: 1; }
+        .brand-name {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: 0.02em;
+            color: var(--color-nav-text);
+        }
+        .brand-name em { font-style: italic; color: var(--terra); }
+        .brand-sub {
+            font-size: 0.55rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--color-secondary-text);
+            margin-top: 3px;
+            font-weight: 700;
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 0.7rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-nav-text);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .nav-link:hover { color: var(--terra); }
+        .nav-link.active { color: var(--terra); }
+        .nav-link.active::before { content: '•';
+            position: absolute;
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--terra);
+            font-size: 1.1rem;
+        }
+
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: var(--color-nav-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            box-shadow: 0 24px 48px -16px rgba(42, 37, 34, 0.25);
+            min-width: 200px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.28s ease;
+            padding: 0.5rem;
+            overflow: hidden;
+        }
+        html[data-theme='dark'] .dropdown-menu { box-shadow: 0 24px 48px -16px rgba(0,0,0,0.7); }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--terra), var(--sage));
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.6rem 0.9rem;
+            color: var(--color-nav-text);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover { background: var(--terra-soft); color: var(--terra); padding-left: 1.3rem; }
+
+        .nav-icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-nav-text);
+            transition: all 0.25s ease;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .nav-icon-btn:hover {
+            background: var(--terra);
+            color: #FFF;
+            border-color: var(--terra);
+            transform: rotate(8deg);
+        }
+
+        .nav-cta {
+            background: var(--color-nav-text);
+            color: var(--color-nav-bg);
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.65rem 1.3rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            border: 1.5px solid var(--color-nav-text);
+        }
+        .nav-cta:hover {
+            background: var(--terra);
+            border-color: var(--terra);
+            color: #FFF;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px -6px rgba(198, 112, 92, 0.5);
+        }
+
+        .btn-primary {
+            background: var(--color-nav-text);
+            color: var(--color-nav-bg);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid var(--color-nav-text);
+        }
+        .btn-primary:hover {
+            background: var(--terra);
+            border-color: var(--terra);
+            color: #FFF;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 28px -8px rgba(198, 112, 92, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-primary-text);
+            border: 2px solid var(--color-primary-text);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--sage);
+            border-color: var(--sage);
+            color: #FFF;
+            transform: translateY(-3px);
+        }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--terra);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--terra); }
+        .eyebrow.center::before { display: none; }
+
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px solid var(--color-border);
+            pointer-events: none;
+        }
+        .deco-circle.dashed { border-style: dashed; border-color: var(--terra); opacity: 0.4; }
+
+        .grain::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+        html[data-theme='dark'] .grain::after { mix-blend-mode: screen; opacity: 0.08; }
+
+        /* Category tabs */
+        .cat-tab {
+            padding: 0.7rem 1.4rem;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-secondary-text);
+            border: 1px solid var(--color-border);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+        .cat-tab:hover { color: var(--terra); border-color: var(--terra); }
+        .cat-tab.active {
+            background: var(--terra);
+            color: #FFF;
+            border-color: var(--terra);
+            box-shadow: 0 8px 20px -6px rgba(198, 112, 92, 0.5);
+        }
+
+        /* Pricing rows */
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 1rem 0;
+            border-bottom: 1px dashed var(--color-border);
+            transition: all 0.25s ease;
+        }
+        .price-row:last-child { border-bottom: none; }
+        .price-row:hover { padding-left: 8px; }
+        .price-row:hover .price-name { color: var(--terra); }
+        .price-name { transition: color 0.25s; }
+
+        .price-cat-panel { display: none; }
+        .price-cat-panel.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Membership cards */
+        .member-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            border-radius: 1.75rem;
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .member-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(42, 37, 34, 0.2); }
+        html[data-theme='dark'] .member-card:hover { box-shadow: 0 24px 48px -16px rgba(0,0,0,0.6); }
+        .member-card.featured {
+            border: 2px solid var(--terra);
+            box-shadow: 0 20px 40px -12px rgba(198, 112, 92, 0.35);
+        }
+        .member-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 0.35rem 0.8rem;
+            border-radius: 9999px;
+            background: var(--terra);
+            color: #FFF;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 1400px) {
+            .nav-link { font-size: 0.66rem; padding: 0.45rem 0.55rem; letter-spacing: 0.1em; }
+        }
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; transform: none; display: none; opacity: 1; visibility: visible; box-shadow: none; border: none; padding-left: 1rem; }
+            .dropdown-menu::before { display: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        #mobile-drawer { transition: all 0.3s ease; }
+        #drawer-panel { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+        .drawer-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .drawer-link:hover, .drawer-link.active { background: var(--terra-soft); color: var(--terra); padding-left: 1.75rem; }
+
+        #main-footer { background: var(--band-bg); color: var(--band-text); }
+        #main-footer .brand-name { color: var(--band-text); }
+        #main-footer .brand-name em { color: var(--terra); }
+        #main-footer .brand-sub { color: rgba(245, 239, 230, 0.5); }
+        #main-footer .brand-mark { background: var(--terra); color: #FFF; }
+        #main-footer .footer-heading {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--terra);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+        #main-footer .footer-link { color: rgba(245, 239, 230, 0.7); transition: all 0.2s ease; }
+        #main-footer .footer-link:hover { color: var(--terra); padding-left: 6px; }
+
+        .header-spacer { height: 90px; }
+        @media (max-width: 640px) { .header-spacer { height: 82px; } }
+
+        /* Hide number arrows in inputs */
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    
+        .hero-bg {
+            background-image: linear-gradient(rgba(245, 239, 230, 0.9), rgba(245, 239, 230, 0.9)), url('assets/1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        html[data-theme='dark'] .hero-bg {
+            background-image: linear-gradient(rgba(15, 13, 10, 0.9), rgba(15, 13, 10, 0.9)), url('assets/1.jpg');
+        }
+</style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+<!-- ══════════ NAVBAR ══════════ -->
+<header id="main-header">
+<nav class="px-3 sm:px-4 py-2.5 flex items-center justify-between gap-3">
+<a class="brand-logo shrink-0" href="index.html">
+<div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
+<div class="brand-text">
+<span class="brand-name">Lum<em>ière</em></span>
+<span class="brand-sub">Local Salon</span>
+</div>
+</a>
+<div class="hidden xl:flex items-center gap-0.5 flex-1 justify-center">
+<div class="dropdown-wrapper">
+<button class="nav-link">
+                        Home <i class="fa-solid fa-chevron-down text-[8px] opacity-50"></i>
+</button>
+<div class="dropdown-menu">
+<a href="index.html">Home 1</a>
+<a href="home2.html">Home 2</a>
+</div>
+</div>
+<a class="nav-link" href="about.html">About</a>
+<a class="nav-link" href="services.html">Services</a>
+<a class="nav-link" href="pricing.html">Pricing</a>
+<a class="nav-link" href="gallery.html">Gallery</a>
+<a class="nav-link" href="offers.html">Offers</a>
+<a class="nav-link" href="testimonials.html">Reviews</a>
+<a class="nav-link" href="tips.html">Tips</a>
+<a class="nav-link" href="contact.html">Contact</a>
+</div>
+<div class="hidden xl:flex items-center gap-1.5 shrink-0">
+<button class="nav-icon-btn" id="theme-toggle" title="Theme">
+<svg class="w-4 h-4 light-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="w-4 h-4 dark-icon hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="nav-icon-btn" id="lang-icon" title="Direction">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<a class="nav-cta" href="contact.html">
+<i class="fa-solid fa-arrow-right -rotate-45"></i> Book
+                </a>
+</div>
+<div class="xl:hidden flex items-center">
+<button class="nav-icon-btn" id="mobile-open">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</nav>
+</header>
+<div class="header-spacer"></div>
+<!-- ══════════ MAIN ══════════ -->
+<main class="flex-grow">
+<!-- ═══ PRICING HERO ═══ -->
+<section class="relative px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto pt-24 lg:pt-32 pb-16 lg:pb-24 min-h-[calc(100vh-90px)] flex flex-col justify-center lg:justify-start hero-bg" ><div class="deco-circle dashed" style="width: 180px; height: 180px; top: 10%; left: 4%;"></div><div class="deco-circle" style="width: 100px; height: 100px; bottom: 8%; right: 6%;"></div><div class="eyebrow mx-auto mb-6" style="display: inline-flex;">Pricing · Transparent Menu</div><h1 class="mx-auto text-center text-5xl md:text-6xl lg:text-7xl leading-[0.98] text-primary-text mb-6 max-w-4xl">Honest prices, <span class="italic" style="color: var(--terra);">no surprises.</span></h1><p class="mx-auto text-center text-secondary-text text-lg lg:text-xl leading-relaxed mb-8 max-w-2xl mb-12">
+                    Full menu prices, listed upfront. Taxes included. No hidden charges, no "consultation fees", no upselling scripts.
+                </p><div class="flex flex-wrap gap-4 justify-center mx-auto">
+<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="contact.html">
+<i class="fa-solid fa-calendar-check"></i> Book a Session
+                    </a>
+<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="offers.html">
+<i class="fa-solid fa-tag"></i> See Offers
+                    </a>
+</div>
+            </section>
+<!-- ═══ PRICE LIST — Category tabs ═══ -->
+<section class="py-20 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto">
+<div class="text-center mb-12">
+<div class="eyebrow mb-4" style="display: inline-flex;">Full Menu Prices</div>
+<h2 class="text-4xl md:text-5xl text-primary-text leading-tight max-w-2xl mx-auto mb-3">
+                    Pick a category, <span class="italic" style="color: var(--terra);">browse the menu.</span>
+</h2>
+<p class="text-secondary-text max-w-xl mx-auto">All prices in ₹ · GST included · Prices may vary slightly by hair length or skin type.</p>
+</div>
+<!-- Tabs -->
+<div class="flex flex-wrap justify-center gap-2.5 mb-14">
+<button class="cat-tab active" data-cat="hair"><i class="fa-solid fa-scissors mr-1.5"></i> Hair</button>
+<button class="cat-tab" data-cat="skin"><i class="fa-solid fa-face-smile mr-1.5"></i> Skin</button>
+<button class="cat-tab" data-cat="makeup"><i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> Makeup</button>
+<button class="cat-tab" data-cat="nails"><i class="fa-solid fa-hand-sparkles mr-1.5"></i> Nails</button>
+<button class="cat-tab" data-cat="spa"><i class="fa-solid fa-hot-tub-person mr-1.5"></i> Spa</button>
+<button class="cat-tab" data-cat="bridal"><i class="fa-solid fa-crown mr-1.5"></i> Bridal</button>
+</div>
+<!-- Panel wrapper -->
+<div class="max-w-4xl mx-auto">
+<!-- HAIR -->
+<div class="price-cat-panel active" data-cat="hair">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Cuts &amp; Styling</div>
+<div class="price-row"><span class="price-name text-primary-text">Women's Haircut</span><span class="text-sm font-bold text-primary-text">₹800</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Men's Haircut</span><span class="text-sm font-bold text-primary-text">₹500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Kids' Haircut (under 12)</span><span class="text-sm font-bold text-primary-text">₹400</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Blow-dry &amp; Styling</span><span class="text-sm font-bold text-primary-text">₹600</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Ironing / Curls</span><span class="text-sm font-bold text-primary-text">₹700</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Hair Wash &amp; Conditioning</span><span class="text-sm font-bold text-primary-text">₹400</span></div>
+</div>
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Colour &amp; Treatments</div>
+<div class="price-row"><span class="price-name text-primary-text">Global Colour (Root Touch-up)</span><span class="text-sm font-bold text-primary-text">₹1,800</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Global Colour (Full)</span><span class="text-sm font-bold text-primary-text">₹3,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Highlights (Per Foil)</span><span class="text-sm font-bold text-primary-text">₹250</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Balayage / Ombré</span><span class="text-sm font-bold text-primary-text">₹5,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Keratin Smoothening</span><span class="text-sm font-bold text-primary-text">₹6,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Hair Spa (Deep Conditioning)</span><span class="text-sm font-bold text-primary-text">₹1,500</span></div>
+</div>
+</div>
+</div>
+<!-- SKIN -->
+<div class="price-cat-panel" data-cat="skin">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Facials</div>
+<div class="price-row"><span class="price-name text-primary-text">Express Glow Facial (30 min)</span><span class="text-sm font-bold text-primary-text">₹1,200</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Signature Lumiere Facial (60 min)</span><span class="text-sm font-bold text-primary-text">₹2,200</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Hydra-Facial</span><span class="text-sm font-bold text-primary-text">₹3,800</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Anti-Ageing Therapy</span><span class="text-sm font-bold text-primary-text">₹4,200</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Chemical Peel (Mild)</span><span class="text-sm font-bold text-primary-text">₹3,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">De-Tan Pack</span><span class="text-sm font-bold text-primary-text">₹900</span></div>
+</div>
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Clean-ups &amp; Add-ons</div>
+<div class="price-row"><span class="price-name text-primary-text">Basic Clean-up</span><span class="text-sm font-bold text-primary-text">₹800</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Deep Clean-up</span><span class="text-sm font-bold text-primary-text">₹1,400</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Under-Eye Treatment</span><span class="text-sm font-bold text-primary-text">₹1,100</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Lip Treatment</span><span class="text-sm font-bold text-primary-text">₹600</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Threading (Eyebrow)</span><span class="text-sm font-bold text-primary-text">₹80</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Threading (Upper Lip)</span><span class="text-sm font-bold text-primary-text">₹50</span></div>
+</div>
+</div>
+</div>
+<!-- MAKEUP -->
+<div class="price-cat-panel" data-cat="makeup">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Everyday &amp; Party</div>
+<div class="price-row"><span class="price-name text-primary-text">Light Day Makeup</span><span class="text-sm font-bold text-primary-text">₹1,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Party Makeup</span><span class="text-sm font-bold text-primary-text">₹2,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">HD Party Makeup</span><span class="text-sm font-bold text-primary-text">₹3,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Airbrush Makeup</span><span class="text-sm font-bold text-primary-text">₹4,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Saree / Lehenga Draping</span><span class="text-sm font-bold text-primary-text">₹800</span></div>
+</div>
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Engagement &amp; Bridal</div>
+<div class="price-row"><span class="price-name text-primary-text">Engagement Makeup</span><span class="text-sm font-bold text-primary-text">₹6,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Reception Makeup</span><span class="text-sm font-bold text-primary-text">₹8,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Bridal Trial Makeup</span><span class="text-sm font-bold text-primary-text">₹4,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Bridal Makeup (Day-of)</span><span class="text-sm font-bold text-primary-text">₹15,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Family / Bridesmaid Makeup (per person)</span><span class="text-sm font-bold text-primary-text">₹2,500</span></div>
+</div>
+</div>
+</div>
+<!-- NAILS -->
+<div class="price-cat-panel" data-cat="nails">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Manicure</div>
+<div class="price-row"><span class="price-name text-primary-text">Classic Manicure</span><span class="text-sm font-bold text-primary-text">₹600</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Spa Manicure</span><span class="text-sm font-bold text-primary-text">₹900</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Gel Polish Manicure</span><span class="text-sm font-bold text-primary-text">₹1,400</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Gel Nail Extensions (Full Set)</span><span class="text-sm font-bold text-primary-text">₹2,800</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Nail Art (per nail)</span><span class="text-sm font-bold text-primary-text">₹80</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Nail Extension Refills</span><span class="text-sm font-bold text-primary-text">₹1,800</span></div>
+</div>
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Pedicure</div>
+<div class="price-row"><span class="price-name text-primary-text">Classic Pedicure</span><span class="text-sm font-bold text-primary-text">₹800</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Spa Pedicure</span><span class="text-sm font-bold text-primary-text">₹1,200</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Gel Polish Pedicure</span><span class="text-sm font-bold text-primary-text">₹1,600</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Heel Crack Treatment</span><span class="text-sm font-bold text-primary-text">₹1,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Foot Massage (20 min)</span><span class="text-sm font-bold text-primary-text">₹600</span></div>
+</div>
+</div>
+</div>
+<!-- SPA -->
+<div class="price-cat-panel" data-cat="spa">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Massage</div>
+<div class="price-row"><span class="price-name text-primary-text">Head &amp; Shoulder Massage (20 min)</span><span class="text-sm font-bold text-primary-text">₹600</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Back &amp; Neck Massage (30 min)</span><span class="text-sm font-bold text-primary-text">₹1,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Full-Body Relaxation (60 min)</span><span class="text-sm font-bold text-primary-text">₹2,200</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Aroma Therapy Massage (90 min)</span><span class="text-sm font-bold text-primary-text">₹3,200</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Deep Tissue Massage (60 min)</span><span class="text-sm font-bold text-primary-text">₹2,800</span></div>
+</div>
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Body &amp; Waxing</div>
+<div class="price-row"><span class="price-name text-primary-text">Body Polishing (Full)</span><span class="text-sm font-bold text-primary-text">₹3,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Body Wrap (De-Stress)</span><span class="text-sm font-bold text-primary-text">₹3,200</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Full Arms Waxing (Rica)</span><span class="text-sm font-bold text-primary-text">₹700</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Full Legs Waxing (Rica)</span><span class="text-sm font-bold text-primary-text">₹900</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Underarms Waxing</span><span class="text-sm font-bold text-primary-text">₹150</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Full Body Waxing (Rica)</span><span class="text-sm font-bold text-primary-text">₹3,500</span></div>
+</div>
+</div>
+</div>
+<!-- BRIDAL -->
+<div class="price-cat-panel" data-cat="bridal">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Bridal Packages</div>
+<div class="price-row"><span class="price-name text-primary-text">Bridal Makeup — Essential</span><span class="text-sm font-bold text-primary-text">₹15,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Bridal Makeup — Signature</span><span class="text-sm font-bold text-primary-text">₹25,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Bridal Makeup — Luxe (with trial)</span><span class="text-sm font-bold text-primary-text">₹40,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Engagement Package</span><span class="text-sm font-bold text-primary-text">₹18,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Sangeet / Mehendi Package</span><span class="text-sm font-bold text-primary-text">₹12,000</span></div>
+</div>
+<div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Pre-Bridal Programs</div>
+<div class="price-row"><span class="price-name text-primary-text">Pre-Bridal Skin &amp; Hair (4 weeks)</span><span class="text-sm font-bold text-primary-text">₹12,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Pre-Bridal Skin &amp; Hair (8 weeks)</span><span class="text-sm font-bold text-primary-text">₹22,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Bridal Glow Facial Series (3)</span><span class="text-sm font-bold text-primary-text">₹7,500</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Bridal Hair Spa Series (3)</span><span class="text-sm font-bold text-primary-text">₹4,000</span></div>
+<div class="price-row"><span class="price-name text-primary-text">Family / Bridesmaid (per person)</span><span class="text-sm font-bold text-primary-text">₹2,500</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Note -->
+<div class="max-w-4xl mx-auto mt-12 bg-hover rounded-2xl p-6 border border-border flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-terra-soft flex items-center justify-center shrink-0">
+<i class="fa-solid fa-circle-info" style="color: var(--terra);"></i>
+</div>
+<p class="text-sm text-secondary-text leading-relaxed">
+<strong class="text-primary-text">Please note:</strong> Prices may vary slightly based on hair length, hair density, or skin condition. Final price will always be confirmed during your free consultation before we begin. All prices are inclusive of GST.
+                </p>
+</div>
+</section>
+<!-- ═══ MEMBERSHIP / PACKAGES ═══ -->
+<section class="py-24 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto bg-hover border-y border-border">
+<div class="text-center mb-16">
+<div class="eyebrow mb-4" style="display: inline-flex;">Save More</div>
+<h2 class="text-4xl md:text-5xl text-primary-text leading-tight max-w-2xl mx-auto mb-3">
+                    Membership <span class="italic" style="color: var(--terra);">packages.</span>
+</h2>
+<p class="text-secondary-text max-w-xl mx-auto">Prepay and save up to 30% on regular visits. Ideal if you're a regular or love to be pampered.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    <!-- Starter -->
+    <div class="member-card bg-cream p-8 border border-border">
+        <div class="text-xs uppercase tracking-widest text-secondary-text mb-3">Starter</div>
+        <h3 class="text-2xl mb-2 text-primary-text">The Refresh</h3>
+        <p class="text-sm text-secondary-text mb-6">Perfect for monthly maintenance.</p>
+        <div class="flex items-baseline gap-1 mb-6">
+            <span class="font-display text-5xl text-primary-text">&#8377;4,500</span>
+            <span class="text-sm text-secondary-text">/quarter</span>
+        </div>
+        <ul class="space-y-3 text-sm text-secondary-text mb-8">
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 3 haircuts</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 1 signature facial</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 1 spa manicure</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 10% off add-ons</li>
+        </ul>
+        <a class="btn-outline w-full text-center py-3 rounded-full text-xs font-bold uppercase tracking-widest inline-block mt-auto" href="contact.html">Get Started</a>
+    </div>
+
+    <!-- Signature (featured) -->
+    <div class="member-card bg-cream p-8 border" style="border-color: var(--terra); box-shadow: 0 20px 40px -12px rgba(198, 112, 92, 0.35);">
+        <div class="member-badge">Most Popular</div>
+        <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--terra);">Signature</div>
+        <h3 class="text-2xl mb-2 text-primary-text">The Ritual</h3>
+        <p class="text-sm text-secondary-text mb-6">Our most-loved monthly routine.</p>
+        <div class="flex items-baseline gap-1 mb-6">
+            <span class="font-display text-5xl text-primary-text">&#8377;8,500</span>
+            <span class="text-sm text-secondary-text">/quarter</span>
+        </div>
+        <ul class="space-y-3 text-sm text-secondary-text mb-8">
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 4 haircuts + blow-dry</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 2 signature facials</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 1 hydra-facial</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 2 manicures + 1 pedicure</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 15% off all add-ons</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> Priority weekend booking</li>
+        </ul>
+        <a class="btn-primary w-full text-center py-3 rounded-full text-xs font-bold uppercase tracking-widest inline-block mt-auto" href="contact.html">Book Now</a>
+    </div>
+
+    <!-- Luxe -->
+    <div class="member-card bg-cream p-8 border border-border">
+        <div class="text-xs uppercase tracking-widest text-secondary-text mb-3">Luxe</div>
+        <h3 class="text-2xl mb-2 text-primary-text">The Indulgence</h3>
+        <p class="text-sm text-secondary-text mb-6">For those who love the full ritual.</p>
+        <div class="flex items-baseline gap-1 mb-6">
+            <span class="font-display text-5xl text-primary-text">&#8377;16,000</span>
+            <span class="text-sm text-secondary-text">/quarter</span>
+        </div>
+        <ul class="space-y-3 text-sm text-secondary-text mb-8">
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> Unlimited haircuts</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 3 signature facials</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 1 anti-ageing therapy</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 2 gel manicures + 2 pedicures</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 1 full-body massage</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-2" style="color: var(--terra);"></i> 25% off all add-ons</li>
+        </ul>
+        <a class="btn-outline w-full text-center py-3 rounded-full text-xs font-bold uppercase tracking-widest inline-block mt-auto" href="contact.html">Enquire</a>
+    </div>
+</div>
+<!-- Gift cards strip -->
+<div class="max-w-5xl mx-auto mt-16">
+<div class="bg-terra-soft rounded-[2rem] p-8 md:p-10 border border-border grain relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
+<div class="w-20 h-20 rounded-full bg-background flex items-center justify-center shrink-0">
+<i class="fa-solid fa-gift text-2xl" style="color: var(--terra);"></i>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="text-2xl md:text-3xl mb-2 text-primary-text">Gift a Lumiere experience</h3>
+<p class="text-secondary-text text-sm md:text-base">Digital and physical gift cards available from ₹1,000. Perfect for birthdays, thank-yous, and self-care nudges.</p>
+</div>
+<a class="btn-primary px-7 py-3.5 rounded-full text-sm whitespace-nowrap" href="contact.html">Buy Gift Card</a>
+</div>
+</div>
+</section>
+<!-- ═══ WHAT AFFECTS PRICE ═══ -->
+<section class="py-24 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+<div class="relative order-2 lg:order-1">
+<div class="bg-sage-soft rounded-[2.5rem] p-10 md:p-14 grain relative overflow-hidden border border-border">
+<i class="fa-solid fa-scale-balanced text-[6rem] mb-6 block" style="color: var(--sage); opacity: 0.5;"></i>
+<div class="font-display italic text-3xl md:text-4xl leading-snug text-primary-text mb-6">
+                            "Fair pricing, always explained."
+                        </div>
+<div class="text-xs uppercase tracking-widest text-secondary-text">— The Lumiere promise</div>
+</div>
+<div class="deco-circle dashed" style="width: 140px; height: 140px; bottom: -30px; left: -30px;"></div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="eyebrow mb-5">Good To Know</div>
+<h2 class="text-4xl md:text-5xl text-primary-text leading-tight mb-6">
+                        What affects <span class="italic" style="color: var(--terra);">your price.</span>
+</h2>
+<p class="text-secondary-text leading-relaxed mb-8">
+                        We list starting prices for everything, and confirm the exact cost during your free consultation — before any work begins.
+                    </p>
+<div class="space-y-5">
+<div class="flex items-start gap-4">
+<div class="w-9 h-9 rounded-full bg-terra-soft flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs" style="color: var(--terra);"></i></div>
+<div>
+<h4 class="font-bold text-primary-text mb-1">Hair length &amp; density</h4>
+<p class="text-secondary-text text-sm leading-relaxed">Longer or thicker hair requires more product and time.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-9 h-9 rounded-full bg-terra-soft flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs" style="color: var(--terra);"></i></div>
+<div>
+<h4 class="font-bold text-primary-text mb-1">Skin condition</h4>
+<p class="text-secondary-text text-sm leading-relaxed">Specific concerns may need a targeted, higher-grade treatment.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-9 h-9 rounded-full bg-terra-soft flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs" style="color: var(--terra);"></i></div>
+<div>
+<h4 class="font-bold text-primary-text mb-1">Product choice</h4>
+<p class="text-secondary-text text-sm leading-relaxed">Premium brands like Kérastase &amp; Olaplex cost more but last longer.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-9 h-9 rounded-full bg-terra-soft flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs" style="color: var(--terra);"></i></div>
+<div>
+<h4 class="font-bold text-primary-text mb-1">Senior stylist vs. junior</h4>
+<p class="text-secondary-text text-sm leading-relaxed">Senior stylists charge a small premium for their experience.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ CTA ═══ -->
+<section class="py-20 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto">
+<div class="relative bg-terra-soft rounded-[2.5rem] p-12 md:p-20 text-center overflow-hidden border border-border grain">
+<div class="deco-circle dashed" style="width: 200px; height: 200px; top: -50px; right: -50px;"></div>
+<div class="deco-circle" style="width: 120px; height: 120px; bottom: -30px; left: -30px;"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<div class="eyebrow mb-6" style="display: inline-flex;">Ready When You Are</div>
+<h2 class="text-4xl md:text-5xl text-primary-text leading-tight mb-6">
+                        Free consultation, <span class="italic" style="color: var(--terra);">always.</span>
+</h2>
+<p class="text-secondary-text text-lg mb-10 leading-relaxed">
+                        Book a slot, come in, and we'll walk you through the menu — no obligation, no pressure.
+                    </p>
+<div class="flex flex-wrap gap-4 justify-center">
+<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="contact.html">
+<i class="fa-solid fa-calendar-check"></i> Book Consultation
+                        </a>
+<a class="btn-outline px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="tel:+18005550199">
+<i class="fa-solid fa-phone"></i> Call Us
+                        </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ══════════ MOBILE DRAWER ══════════ -->
+<div class="fixed inset-0 z-[70] pointer-events-none" id="mobile-drawer">
+<div class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none" id="drawer-backdrop"></div>
+<div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-background shadow-2xl xl:hidden overflow-y-auto transform translate-x-full" id="drawer-panel">
+<div class="p-6 border-b border-border flex justify-between items-center">
+<a class="brand-logo" href="index.html" style="padding-left: 0;">
+<div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
+<div class="brand-text">
+<span class="brand-name">Lum<em>ière</em></span>
+<span class="brand-sub">Local Salon</span>
+</div>
+</a>
+<button class="nav-icon-btn" id="mobile-close">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<nav>
+<div>
+<button class="drawer-link w-full" id="mobile-homes-toggle">
+<span>Home</span>
+<svg class="w-3.5 h-3.5 transition-transform duration-200" fill="none" id="homes-icon" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden bg-hover" id="mobile-homes-menu">
+<a class="drawer-link !py-3 !pl-8 !text-sm" href="index.html">Home 1</a>
+<a class="drawer-link !py-3 !pl-8 !text-sm" href="home2.html">Home 2</a>
+</div>
+</div>
+<a class="drawer-link" href="about.html">About Us</a>
+<a class="drawer-link" href="services.html">Services</a>
+<a class="drawer-link" href="pricing.html">Pricing</a>
+<a class="drawer-link" href="gallery.html">Gallery</a>
+<a class="drawer-link" href="offers.html">Offers</a>
+<a class="drawer-link" href="testimonials.html">Testimonials</a>
+<a class="drawer-link" href="tips.html">Beauty Tips</a>
+<a class="drawer-link" href="contact.html">Contact</a>
+</nav>
+<div class="p-6 flex justify-around border-t border-border mt-4">
+<button class="flex flex-col items-center gap-1 text-xs" id="mobile-lang-icon-drawer" style="color: var(--color-secondary-text);">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                    RTL
+                </button>
+<button class="flex flex-col items-center gap-1 text-xs" id="drawer-theme-toggle" style="color: var(--color-secondary-text);">
+<svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                    Theme
+                </button>
+</div>
+<div class="px-6 pb-8">
+<a class="block w-full btn-primary text-center py-3 rounded-full text-xs font-bold uppercase tracking-widest" href="contact.html">Book Now</a>
+</div>
+</div>
+</div>
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="pt-20" id="main-footer">
+<div class="container mx-auto px-6 lg:px-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b" style="border-color: rgba(245, 239, 230, 0.1);">
+<div class="lg:col-span-2">
+<a class="brand-logo mb-6" href="index.html" style="padding-left: 0;">
+<div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
+<div class="brand-text">
+<span class="brand-name">Lum<em>ière</em></span>
+<span class="brand-sub">Local Salon</span>
+</div>
+</a>
+<p class="text-base leading-relaxed max-w-sm" style="color: rgba(245, 239, 230, 0.65);">
+                        A quiet studio for hair, skin, and makeup — where beauty is composed, not rushed.
+                    </p>
+<div class="flex gap-3 mt-8">
+<a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" href="#" style="background: rgba(245, 239, 230, 0.08); color: var(--band-text);"><i class="fab fa-facebook-f text-sm"></i></a>
+<a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" href="#" style="background: rgba(245, 239, 230, 0.08); color: var(--band-text);"><i class="fab fa-instagram text-sm"></i></a>
+<a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" href="#" style="background: rgba(245, 239, 230, 0.08); color: var(--band-text);"><i class="fab fa-whatsapp text-sm"></i></a>
+</div>
+</div>
+<div>
+<h4 class="footer-heading">Quick Links</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="footer-link" href="about.html">About Us</a></li>
+<li><a class="footer-link" href="services.html">Services</a></li>
+<li><a class="footer-link" href="pricing.html">Pricing</a></li>
+<li><a class="footer-link" href="gallery.html">Gallery</a></li>
+<li><a class="footer-link" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-heading">Visit Us</h4>
+<ul class="space-y-4 text-sm" style="color: rgba(245, 239, 230, 0.7);">
+<li class="flex items-start gap-3"><i class="fa-solid fa-location-dot mt-1 w-4" style="color: var(--terra);"></i><span>12 Rose Lane, Bandra West,<br/>Mumbai 400050</span></li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-phone w-4" style="color: var(--terra);"></i><a class="footer-link" href="tel:+18005550199">+1 (800) 555-0199</a></li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-envelope w-4" style="color: var(--terra);"></i><a class="footer-link" href="mailto:hello@lumiere.com">hello@lumiere.com</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-heading">Newsletter</h4>
+<div class="flex flex-col space-y-3">
+<input class="p-3.5 text-sm rounded-full focus:outline-none" placeholder="Email address" style="background: rgba(245, 239, 230, 0.06); border: 1px solid rgba(245, 239, 230, 0.12); color: var(--band-text);" type="email"/>
+<button class="btn-primary py-3 rounded-full text-xs font-bold uppercase tracking-widest"  style="background: var(--terra); border-color: var(--terra); color: #FFF;">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="py-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs" style="color: rgba(245, 239, 230, 0.4);">
+<div>© 2026 Lumiere · Local Salon. All rights reserved.</div>
+<div class="flex gap-6">
+<a class="hover:opacity-80" href="#">Privacy</a>
+<a class="hover:opacity-80" href="#">Terms</a>
+<a class="hover:opacity-80" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer
+            const drawer = document.getElementById('mobile-drawer');
+            const panel = document.getElementById('drawer-panel');
+            const backdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                drawer.classList.remove('pointer-events-none');
+                panel.classList.remove('translate-x-full');
+                backdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                panel.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { drawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 350);
+            };
+            document.getElementById('mobile-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-close').addEventListener('click', closeDrawer);
+            backdrop.addEventListener('click', closeDrawer);
+
+            document.getElementById('mobile-homes-toggle')?.addEventListener('click', () => {
+                document.getElementById('mobile-homes-menu').classList.toggle('hidden');
+                document.getElementById('homes-icon').classList.toggle('rotate-180');
+            });
+
+            // Theme
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn?.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            // RTL
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn?.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active nav
+            const currentPath = window.location.pathname.split('/').pop() || 'pricing.html';
+            document.querySelectorAll('.nav-link, .drawer-link').forEach(link => {
+                if (link.getAttribute('href') === currentPath) link.classList.add('active');
+            });
+
+            // Category tabs
+            const tabs = document.querySelectorAll('.cat-tab');
+            const panels = document.querySelectorAll('.price-cat-panel');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const cat = tab.dataset.cat;
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.querySelector(`.price-cat-panel[data-cat="${cat}"]`)?.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
