@@ -13,46 +13,60 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
         :root, html[data-theme='light'] {
-            --terra: #C6705C;
-            --terra-soft: #F0DDD6;
-            --sage: #7A8B6F;
-            --sage-soft: #E3E8DD;
-            --cream: #F5EFE6;
-            --paper: #FBF7F1;
-            --ink: #2A2522;
-            --muted: #8A7F76;
-            --line: #E5DCD1;
+            /* Primary Luxury Accent: Radiant Rose Gold / Luxe Salon Rose */
+            --terra: #B95C6E;
+            --terra-soft: #FDEEF2;
+            
+            /* Secondary Botanical Accent: Eucalyptus Sage */
+            --sage: #53755C;
+            --sage-soft: #EBF3ED;
+            
+            /* Clean "White Mode" Neutrals */
+            --cream: #F9F8F6;
+            --paper: #FFFFFF;
+            
+            /* Deep High-Contrast Typography */
+            --ink: #181516;
+            --muted: #665D60;
+            --line: #E8E2D9;
 
-            --band-bg: #2A2522;
-            --band-text: #F5EFE6;
-            --inverse-bg: #2A2522;
-            --inverse-text: #F5EFE6;
-
+            --band-bg: #181516;
+            --band-text: #FAF6F4;
+            --inverse-bg: #181516;
+            --inverse-text: #FAF6F4;
+            
             --color-background: var(--paper);
             --color-primary-text: var(--ink);
             --color-secondary-text: var(--muted);
             --color-accent: var(--terra);
             --color-accent-light: var(--terra-soft);
             --color-border: var(--line);
-            --color-hover: #EFE7DC;
-            --color-nav-bg: var(--cream);
+            --color-hover: #F2EFE9;
+            --color-nav-bg: rgba(255, 255, 255, 0.94);
             --color-nav-text: var(--ink);
         }
         html[data-theme='dark'] {
-            --terra: #E08A75;
-            --terra-soft: #3D231C;
-            --sage: #9EAF92;
-            --sage-soft: #2A3226;
-            --cream: #1F1B18;
-            --paper: #17140F;
-            --ink: #F5EFE6;
-            --muted: #A89B90;
-            --line: #322C26;
+            /* Primary Luxury Accent: Luminous Radiant Rose Gold */
+            --terra: #EC8FA2;
+            --terra-soft: #381A22;
+            
+            /* Secondary Botanical Accent: Luminous Sage */
+            --sage: #88B793;
+            --sage-soft: #1B2B1F;
+            
+            /* Midnight Velvet Neutrals */
+            --cream: #18161A;
+            --paper: #0E0D10;
+            
+            /* Crisp Luminous Typography */
+            --ink: #FAF7F6;
+            --muted: #B8B0B4;
+            --line: #2A252E;
 
-            --band-bg: #0F0D0A;
-            --band-text: #F5EFE6;
-            --inverse-bg: #0F0D0A;
-            --inverse-text: #F5EFE6;
+            --band-bg: #080709;
+            --band-text: #FAF7F6;
+            --inverse-bg: #080709;
+            --inverse-text: #FAF7F6;
 
             --color-background: var(--paper);
             --color-primary-text: var(--ink);
@@ -60,19 +74,39 @@
             --color-accent: var(--terra);
             --color-accent-light: var(--terra-soft);
             --color-border: var(--line);
-            --color-hover: #262019;
-            --color-nav-bg: #1F1B18;
-            --color-nav-text: #F5EFE6;
+            --color-hover: #221F25;
+            --color-nav-bg: rgba(24, 22, 26, 0.94);
+            --color-nav-text: #FAF7F6;
         }
+
+        /* High contrast visibility helpers in Dark Theme */
+        html[data-theme='dark'] .brand-mark { color: #121013; }
+        html[data-theme='dark'] .nav-cta:hover { color: #121013; }
+        html[data-theme='dark'] .btn-primary:hover { color: #121013; }
+        html[data-theme='dark'] .cat-tab.active { color: #121013; }
 
         * { -webkit-font-smoothing: antialiased; }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
         body {
             background-color: var(--color-background);
             color: var(--color-primary-text);
             font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
             transition: background-color 0.3s, color 0.3s;
-            overflow-x: hidden;
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spinSlow 24s linear infinite;
+        }
+        .hero-arch-frame {
+            border-radius: 2.25rem;
         }
         .font-display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
         h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
@@ -114,27 +148,14 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         html[data-theme='dark'] #main-header { box-shadow: 0 12px 40px -12px rgba(0,0,0,0.6); }
-        #main-header::before {
-            content: '';
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 40%;
-            background: linear-gradient(180deg, var(--terra) 0%, var(--sage) 100%);
-            border-radius: 4px;
-        }
-        @media (max-width: 1280px) { #main-header::before { display: none; } }
 
         .brand-logo {
             display: inline-flex;
             align-items: center;
             gap: 0.65rem;
             text-decoration: none;
-            padding-left: 1.5rem;
+            padding-left: 0.25rem;
         }
-        @media (max-width: 1280px) { .brand-logo { padding-left: 0; } }
         .brand-mark {
             width: 42px;
             height: 42px;
@@ -377,19 +398,66 @@
             box-shadow: 0 8px 20px -6px rgba(198, 112, 92, 0.5);
         }
 
-        /* Pricing rows */
+        /* Pricing rows with clear hierarchy & quick booking button */
         .price-row {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: baseline;
-            padding: 1rem 0;
+            padding: 0.85rem 0.5rem;
             border-bottom: 1px dashed var(--color-border);
+            border-radius: 0.75rem;
             transition: all 0.25s ease;
         }
         .price-row:last-child { border-bottom: none; }
-        .price-row:hover { padding-left: 8px; }
+        .price-row:hover {
+            background-color: var(--color-hover);
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
         .price-row:hover .price-name { color: var(--terra); }
-        .price-name { transition: color 0.25s; }
+        .price-name { transition: color 0.25s; font-weight: 600; font-size: 0.95rem; }
+        .duration-badge {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 9999px;
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            color: var(--color-secondary-text);
+            font-weight: 500;
+        }
+        .popular-badge {
+            font-size: 0.65rem;
+            padding: 0.15rem 0.45rem;
+            border-radius: 9999px;
+            background: var(--terra-soft);
+            color: var(--terra);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .book-row-btn {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            color: var(--color-primary-text);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            opacity: 0.85;
+        }
+        .price-row:hover .book-row-btn {
+            background: var(--terra);
+            border-color: var(--terra);
+            color: #FFF;
+            opacity: 1;
+            transform: scale(1.05);
+        }
 
         .price-cat-panel { display: none; }
         .price-cat-panel.active { display: block; animation: fadeIn 0.4s ease; }
@@ -478,19 +546,19 @@
         input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
     
         .hero-bg {
-            background-image: linear-gradient(rgba(245, 239, 230, 0.9), rgba(245, 239, 230, 0.9)), url('assets/1.jpg');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('assets/1.jpg');
             background-size: cover;
             background-position: center;
         }
         html[data-theme='dark'] .hero-bg {
-            background-image: linear-gradient(rgba(15, 13, 10, 0.9), rgba(15, 13, 10, 0.9)), url('assets/1.jpg');
+            background-image: linear-gradient(rgba(14, 13, 16, 0.92), rgba(14, 13, 16, 0.92)), url('assets/1.jpg');
         }
 </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
 <!-- ══════════ NAVBAR ══════════ -->
 <header id="main-header">
-<nav class="px-3 sm:px-4 py-2.5 flex items-center justify-between gap-3">
+<nav class="px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4">
 <a class="brand-logo shrink-0" href="index.html">
 <div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
 <div class="brand-text">
@@ -510,14 +578,14 @@
 </div>
 <a class="nav-link" href="about.html">About</a>
 <a class="nav-link" href="services.html">Services</a>
-<a class="nav-link" href="pricing.html">Pricing</a>
+<a class="nav-link active" href="pricing.html">Pricing</a>
 <a class="nav-link" href="gallery.html">Gallery</a>
 <a class="nav-link" href="offers.html">Offers</a>
 <a class="nav-link" href="testimonials.html">Reviews</a>
 <a class="nav-link" href="tips.html">Tips</a>
 <a class="nav-link" href="contact.html">Contact</a>
 </div>
-<div class="hidden xl:flex items-center gap-1.5 shrink-0">
+<div class="hidden xl:flex items-center gap-2 shrink-0">
 <button class="nav-icon-btn" id="theme-toggle" title="Theme">
 <svg class="w-4 h-4 light-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 <svg class="w-4 h-4 dark-icon hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
@@ -526,8 +594,8 @@
 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
 <a class="nav-cta" href="contact.html">
-<i class="fa-solid fa-arrow-right -rotate-45"></i> Book
-                </a>
+<i class="fa-solid fa-calendar-check text-[11px]"></i> Book Now
+</a>
 </div>
 <div class="xl:hidden flex items-center">
 <button class="nav-icon-btn" id="mobile-open">
@@ -539,27 +607,236 @@
 <div class="header-spacer"></div>
 <!-- ══════════ MAIN ══════════ -->
 <main class="flex-grow">
-<!-- ═══ PRICING HERO ═══ -->
-<section class="relative px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto pt-24 lg:pt-32 pb-16 lg:pb-24 min-h-[calc(100vh-90px)] flex flex-col justify-center lg:justify-start hero-bg" ><div class="deco-circle dashed" style="width: 180px; height: 180px; top: 10%; left: 4%;"></div><div class="deco-circle" style="width: 100px; height: 100px; bottom: 8%; right: 6%;"></div><div class="eyebrow mx-auto mb-6" style="display: inline-flex;">Pricing · Transparent Menu</div><h1 class="mx-auto text-center text-5xl md:text-6xl lg:text-7xl leading-[0.98] text-primary-text mb-6 max-w-4xl">Honest prices, <span class="italic" style="color: var(--terra);">no surprises.</span></h1><p class="mx-auto text-center text-secondary-text text-lg lg:text-xl leading-relaxed mb-8 max-w-2xl mb-12">
-                    Full menu prices, listed upfront. Taxes included. No hidden charges, no "consultation fees", no upselling scripts.
-                </p><div class="flex flex-wrap gap-4 justify-center mx-auto">
-<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="contact.html">
-<i class="fa-solid fa-calendar-check"></i> Book a Session
-                    </a>
-<a class="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2" href="offers.html">
-<i class="fa-solid fa-tag"></i> See Offers
-                    </a>
-</div>
-            </section>
-<!-- ═══ PRICE LIST — Category tabs ═══ -->
-<section class="py-20 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto">
+<!-- ═══ PRICING HERO — Compact 2-Column Luxury Layout ═══ -->
+<section class="relative px-6 sm:px-8 2xl:px-12 max-w-[1500px] mx-auto py-8 sm:py-10 lg:py-12 flex items-center overflow-hidden min-h-[560px] lg:min-h-[590px]">
+    <!-- Ambient subtle glows (hidden on mobile) -->
+    <div class="hero-glow-terra -top-20 -left-20 opacity-50 hidden sm:block"></div>
+    <div class="hero-glow-sage -bottom-20 -right-20 opacity-50 hidden sm:block"></div>
+
+    <div class="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
+        
+        <!-- Left Column: Copy & Value Proposition (7 Cols) -->
+        <div class="lg:col-span-7 flex flex-col justify-center text-left">
+            
+            <div class="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 py-1 rounded-full bg-cream border border-border w-fit mb-4 shadow-sm text-xs">
+                <span class="inline-flex items-center gap-1.5 font-bold uppercase tracking-wider text-accent">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    Pricing & Rates
+                </span>
+                <span class="text-secondary-text opacity-40">•</span>
+                <span class="font-semibold text-secondary-text uppercase tracking-wider">Taxes Included</span>
+                <span class="text-secondary-text opacity-40">•</span>
+                <span class="text-[11px] font-semibold text-sage px-2 py-0.5 rounded-full bg-sage-soft">No Hidden Fees</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-display text-primary-text leading-[1.08] tracking-tight mb-4">
+                Honest rates, <br/>
+                <span class="relative inline-block italic text-accent">
+                    no surprises.
+                    <svg class="absolute -bottom-1 left-0 w-full text-accent/30" height="8" viewBox="0 0 100 8" fill="none">
+                        <path d="M0 5C30 1 70 7 100 3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
+                    </svg>
+                </span>
+            </h1>
+
+            <p class="text-secondary-text text-base sm:text-lg leading-relaxed max-w-xl mb-6">
+                Every service price is published upfront with GST included. Zero mandatory consultation fees, zero surprise add-ons, and transparent timelines for every appointment.
+            </p>
+
+            <!-- Prominent Primary CTAs -->
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <a class="btn-primary group px-6 sm:px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2.5 shadow-md hover:shadow-xl transition-all" href="contact.html">
+                    <i class="fa-solid fa-calendar-check text-accent group-hover:text-white transition-colors"></i>
+                    <span>Book an Appointment</span>
+                    <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a class="btn-outline group px-5 sm:px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:border-accent hover:text-accent transition-all" href="services.html">
+                    <i class="fa-solid fa-spa text-xs"></i>
+                    <span>Explore Services</span>
+                </a>
+                <a class="px-5 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-primary-text bg-cream hover:bg-hover border border-border flex items-center gap-2 transition-all shadow-sm" href="#pricing-menu">
+                    <i class="fa-solid fa-tags text-xs text-accent"></i>
+                    <span>View Pricing</span>
+                </a>
+            </div>
+
+            <!-- Prominent Opening Hours & Contact Details Strip -->
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-cream border border-border grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 shadow-sm">
+                <div class="flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-terra-soft text-accent flex items-center justify-center text-xs shrink-0">
+                        <i class="fa-solid fa-clock"></i>
+                    </span>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-primary-text">Opening Hours</div>
+                        <div class="text-xs text-secondary-text font-medium">Daily: 10:00 AM – 8:00 PM (Walk-ins Welcome)</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-sage-soft text-[var(--sage)] flex items-center justify-center text-xs shrink-0">
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-primary-text">Pricing Help / WhatsApp</div>
+                        <a href="tel:+919820012345" class="text-xs text-accent font-bold hover:underline">+91 98200 12345</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust proof badges & metrics -->
+            <div class="pt-5 border-t border-border grid grid-cols-3 gap-3 sm:gap-5 max-w-lg">
+                <div>
+                    <div class="font-display font-bold text-lg text-primary-text">100%</div>
+                    <p class="text-[11px] text-secondary-text uppercase tracking-wider font-semibold mt-0.5">Upfront Rates</p>
+                </div>
+                <div class="border-l border-border pl-3 sm:pl-5">
+                    <div class="font-display font-bold text-lg text-primary-text">GST</div>
+                    <p class="text-[11px] text-secondary-text uppercase tracking-wider font-semibold mt-0.5">Included Always</p>
+                </div>
+                <div class="border-l border-border pl-3 sm:pl-5">
+                    <div class="font-display font-bold text-lg text-primary-text">Zero</div>
+                    <p class="text-[11px] text-secondary-text uppercase tracking-wider font-semibold mt-0.5">Upsell Pressure</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Visual Composition (Height-Constrained) -->
+        <div class="lg:col-span-5 relative">
+            <!-- Composition Wrapper -->
+            <div class="relative mx-auto max-w-[420px] lg:max-w-none">
+                <!-- Warm Rotated Offset Backing -->
+                <div class="absolute inset-0 bg-accent-light/50 rounded-[2rem] transform rotate-1.5 translate-x-2 translate-y-2 pointer-events-none -z-10"></div>
+                
+                <!-- Main Arched Image Card with Contained Height -->
+                <div class="hero-arch-frame relative border border-border/80 h-[320px] sm:h-[360px] lg:h-[390px] xl:h-[410px] w-full overflow-hidden bg-cream shadow-xl">
+                    <img src="assets/uu.jpg" alt="Lumiere Salon Pricing and Reception Sanctuary" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                    <!-- Subtle warm editorial gradient wash -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10 pointer-events-none"></div>
+
+            
+                    <!-- Circular Rotating Seal -->
+                    <div class="absolute bottom-3 right-3 flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-band text-band shadow-xl border-2 border-accent z-20">
+                        <svg class="w-14 h-14 sm:w-18 sm:h-18 animate-spin-slow" viewBox="0 0 100 100">
+                            <defs>
+                                <path id="stampPricing" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
+                            </defs>
+                            <text font-size="9" font-family="'Inter', sans-serif" font-weight="700" letter-spacing="2.2" fill="currentColor">
+                                <textPath href="#stampPricing">LUMIERE • PRICING • 2018 • </textPath>
+                            </text>
+                        </svg>
+                        <i class="fa-solid fa-tag text-[10px] sm:text-xs text-accent absolute"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ═══ PRICE LIST — Category tabs & Comparative Tiers ═══ -->
+<section id="pricing-menu" class="py-20 px-6 sm:px-8 2xl:px-12 max-w-[1600px] mx-auto scroll-mt-24">
 <div class="text-center mb-12">
-<div class="eyebrow mb-4" style="display: inline-flex;">Full Menu Prices</div>
-<h2 class="text-4xl md:text-5xl text-primary-text leading-tight max-w-2xl mx-auto mb-3">
-                    Pick a category, <span class="italic" style="color: var(--terra);">browse the menu.</span>
-</h2>
-<p class="text-secondary-text max-w-xl mx-auto">All prices in ₹ · GST included · Prices may vary slightly by hair length or skin type.</p>
+    <div class="eyebrow mb-4" style="display: inline-flex;">Compare & Browse Menu</div>
+    <h2 class="text-4xl md:text-5xl text-primary-text leading-tight max-w-2xl mx-auto mb-3">
+        Compare service tiers, <span class="italic text-accent">book with ease.</span>
+    </h2>
+    <p class="text-secondary-text max-w-xl mx-auto">All rates in ₹ · GST included · No consultation fees · Transparent timelines.</p>
 </div>
+
+<!-- ═══ THREE-TIER SERVICE COMPARISON MATRIX ═══ -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+    
+    <!-- Tier 1: Essential Refresh -->
+    <div class="rounded-3xl p-7 border border-border bg-cream flex flex-col justify-between transition-all duration-300 hover:shadow-lg">
+        <div>
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary-text">Level 01</span>
+                <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-background border border-border font-semibold text-secondary-text">20 - 45 mins</span>
+            </div>
+            <h3 class="text-2xl font-display text-primary-text mb-2">Essential Care</h3>
+            <p class="text-xs text-secondary-text leading-relaxed mb-5">Quick routine maintenance and unhurried basic grooming when you're short on time.</p>
+            
+            <div class="pt-4 border-t border-border mb-6">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-secondary-text mb-1">Price Range</div>
+                <div class="font-display text-2xl font-bold text-primary-text">&#8377;400 – &#8377;1,200</div>
+            </div>
+
+            <ul class="space-y-2 text-xs text-secondary-text mb-6">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Precision Haircut &amp; Blowdry</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Express Clean-up &amp; De-Tan</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Classic Manicure or Pedicure</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Clean botanical shampoos</li>
+            </ul>
+        </div>
+        <a href="contact.html?service=hair" class="btn-outline w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest text-center transition-all hover:bg-accent hover:border-accent hover:text-white">
+            Book Essential &rarr;
+        </a>
+    </div>
+
+    <!-- Tier 2: Signature Ritual [FEATURED] -->
+    <div class="rounded-3xl p-7 border-2 border-accent bg-background relative shadow-xl flex flex-col justify-between transform md:-translate-y-2">
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-widest shadow-md flex items-center gap-1.5">
+            <i class="fa-solid fa-star text-[9px]"></i> Most Requested
+        </div>
+        <div>
+            <div class="flex items-center justify-between mb-3 mt-1">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-accent">Level 02</span>
+                <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-terra-soft font-semibold text-accent">60 - 90 mins</span>
+            </div>
+            <h3 class="text-2xl font-display text-primary-text mb-2">Signature Ritual</h3>
+            <p class="text-xs text-secondary-text leading-relaxed mb-5">Our flagship artisanal treatments combining restorative massage and custom formulations.</p>
+            
+            <div class="pt-4 border-t border-border mb-6">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-secondary-text mb-1">Price Range</div>
+                <div class="font-display text-2xl font-bold text-accent">&#8377;1,800 – &#8377;4,500</div>
+            </div>
+
+            <ul class="space-y-2 text-xs text-secondary-text mb-6">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Dimensional Balayage &amp; Toner</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Lumiere Radiance / Hydra Facial</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> HD Cocktail &amp; Party Makeup</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Scalp or facial acupressure included</li>
+            </ul>
+        </div>
+        <a href="contact.html?service=hair" class="btn-primary w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-center shadow-md">
+            Book Signature &rarr;
+        </a>
+    </div>
+
+    <!-- Tier 3: Deluxe Transformation -->
+    <div class="rounded-3xl p-7 border border-border bg-cream flex flex-col justify-between transition-all duration-300 hover:shadow-lg">
+        <div>
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary-text">Level 03</span>
+                <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-background border border-border font-semibold text-secondary-text">120 - 180 mins</span>
+            </div>
+            <h3 class="text-2xl font-display text-primary-text mb-2">Deluxe &amp; Bridal</h3>
+            <p class="text-xs text-secondary-text leading-relaxed mb-5">Intensive restorative therapies, smoothing treatments, and full bridal suite styling.</p>
+            
+            <div class="pt-4 border-t border-border mb-6">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-secondary-text mb-1">Price Range</div>
+                <div class="font-display text-2xl font-bold text-primary-text">&#8377;5,000 – &#8377;18,000</div>
+            </div>
+
+            <ul class="space-y-2 text-xs text-secondary-text mb-6">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Organic Keratin Smoothing Infusion</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Pro-Collagen Firming Cryo Facial</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Full Bespoke Bridal Day Suite</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-[11px]"></i> Private suite + emergency touch-up kit</li>
+            </ul>
+        </div>
+        <a href="contact.html?service=bridal" class="btn-outline w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest text-center transition-all hover:bg-accent hover:border-accent hover:text-white">
+            Book Deluxe &rarr;
+        </a>
+    </div>
+
+</div>
+
+<!-- ═══ SEARCH / QUICK FILTER BAR ═══ -->
+<div class="max-w-md mx-auto mb-10 text-center">
+    <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-secondary-text text-sm"></i>
+        <input type="text" id="pricing-filter" placeholder="Search any treatment (e.g. Balayage, Facial, Gel)..." class="w-full pl-11 pr-4 py-3 rounded-full border border-border bg-background text-xs sm:text-sm text-primary-text focus:outline-none focus:border-accent shadow-sm transition-all" />
+    </div>
+</div>
+
 <!-- Tabs -->
 <div class="flex flex-wrap justify-center gap-2.5 mb-14">
 <button class="cat-tab active" data-cat="hair"><i class="fa-solid fa-scissors mr-1.5"></i> Hair</button>
@@ -569,140 +846,671 @@
 <button class="cat-tab" data-cat="spa"><i class="fa-solid fa-hot-tub-person mr-1.5"></i> Spa</button>
 <button class="cat-tab" data-cat="bridal"><i class="fa-solid fa-crown mr-1.5"></i> Bridal</button>
 </div>
+
 <!-- Panel wrapper -->
 <div class="max-w-4xl mx-auto">
+
 <!-- HAIR -->
 <div class="price-cat-panel active" data-cat="hair">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Cuts &amp; Styling</div>
-<div class="price-row"><span class="price-name text-primary-text">Women's Haircut</span><span class="text-sm font-bold text-primary-text">₹800</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Men's Haircut</span><span class="text-sm font-bold text-primary-text">₹500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Kids' Haircut (under 12)</span><span class="text-sm font-bold text-primary-text">₹400</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Blow-dry &amp; Styling</span><span class="text-sm font-bold text-primary-text">₹600</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Ironing / Curls</span><span class="text-sm font-bold text-primary-text">₹700</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Hair Wash &amp; Conditioning</span><span class="text-sm font-bold text-primary-text">₹400</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border font-bold">Cuts &amp; Styling</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Women's Haircut</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">45m</span>
+            <span class="popular-badge">★ Popular</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;800</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
 </div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Men's Precision Cut</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">30m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;500</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Kids' Haircut (under 12)</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">25m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;400</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Blow-dry &amp; Styling</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">40m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;600</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Ironing / Curls</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">45m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;700</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Hair Wash &amp; Conditioning</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">20m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;400</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
+</div>
+</div>
+
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Colour &amp; Treatments</div>
-<div class="price-row"><span class="price-name text-primary-text">Global Colour (Root Touch-up)</span><span class="text-sm font-bold text-primary-text">₹1,800</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Global Colour (Full)</span><span class="text-sm font-bold text-primary-text">₹3,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Highlights (Per Foil)</span><span class="text-sm font-bold text-primary-text">₹250</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Balayage / Ombré</span><span class="text-sm font-bold text-primary-text">₹5,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Keratin Smoothening</span><span class="text-sm font-bold text-primary-text">₹6,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Hair Spa (Deep Conditioning)</span><span class="text-sm font-bold text-primary-text">₹1,500</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0 font-bold">Colour &amp; Treatments</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Global Root Touch-up</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">60m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;1,800</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Global Full Colour</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">120m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;3,500</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Dimensional Balayage</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">180m</span>
+            <span class="popular-badge">★ Popular</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;5,500</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Keratin Smoothening</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">150m</span>
+            <span class="popular-badge">★ Popular</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;6,500</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Hair Spa Deep Conditioning</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">55m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;1,500</span>
+        <a href="contact.html?service=hair" class="book-row-btn">Book</a>
+    </div>
+</div>
+
 </div>
 </div>
 </div>
+
 <!-- SKIN -->
 <div class="price-cat-panel" data-cat="skin">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Facials</div>
-<div class="price-row"><span class="price-name text-primary-text">Express Glow Facial (30 min)</span><span class="text-sm font-bold text-primary-text">₹1,200</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Signature Lumiere Facial (60 min)</span><span class="text-sm font-bold text-primary-text">₹2,200</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Hydra-Facial</span><span class="text-sm font-bold text-primary-text">₹3,800</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Anti-Ageing Therapy</span><span class="text-sm font-bold text-primary-text">₹4,200</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Chemical Peel (Mild)</span><span class="text-sm font-bold text-primary-text">₹3,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">De-Tan Pack</span><span class="text-sm font-bold text-primary-text">₹900</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border font-bold">Facials</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Express Glow Facial</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">30m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;1,200</span>
+        <a href="contact.html?service=skin" class="book-row-btn">Book</a>
+    </div>
 </div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Signature Lumiere Facial</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">60m</span>
+            <span class="popular-badge">★ Popular</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;2,200</span>
+        <a href="contact.html?service=skin" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Hydra-Infusion Glow Therapy</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">90m</span>
+            <span class="popular-badge">★ Popular</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;3,800</span>
+        <a href="contact.html?service=skin" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Anti-Ageing Firming Ritual</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">75m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;4,200</span>
+        <a href="contact.html?service=skin" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Botanical De-Tan Therapy</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">30m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;900</span>
+        <a href="contact.html?service=skin" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+</div>
+
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Clean-ups &amp; Add-ons</div>
-<div class="price-row"><span class="price-name text-primary-text">Basic Clean-up</span><span class="text-sm font-bold text-primary-text">₹800</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Deep Clean-up</span><span class="text-sm font-bold text-primary-text">₹1,400</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Under-Eye Treatment</span><span class="text-sm font-bold text-primary-text">₹1,100</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Lip Treatment</span><span class="text-sm font-bold text-primary-text">₹600</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Threading (Eyebrow)</span><span class="text-sm font-bold text-primary-text">₹80</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Threading (Upper Lip)</span><span class="text-sm font-bold text-primary-text">₹50</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0 font-bold">Clean-ups &amp; Grooming</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Basic Herbal Clean-up</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">35m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;800</span>
+        <a href="contact.html?service=skin" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Deep Kansa Clean-up</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">50m</span>
+            <span class="popular-badge">★ Popular</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;1,400</span>
+        <a href="contact.html?service=skin" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Under-Eye Brightening</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">30m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;1,100</span>
+        <a href="contact.html?service=skin" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Eyebrow Threading</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">10m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;80</span>
+        <a href="contact.html?service=skin" class="book-row-btn">Book</a>
+    </div>
+</div>
+
 </div>
 </div>
 </div>
+
 <!-- MAKEUP -->
 <div class="price-cat-panel" data-cat="makeup">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Everyday &amp; Party</div>
-<div class="price-row"><span class="price-name text-primary-text">Light Day Makeup</span><span class="text-sm font-bold text-primary-text">₹1,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Party Makeup</span><span class="text-sm font-bold text-primary-text">₹2,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">HD Party Makeup</span><span class="text-sm font-bold text-primary-text">₹3,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Airbrush Makeup</span><span class="text-sm font-bold text-primary-text">₹4,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Saree / Lehenga Draping</span><span class="text-sm font-bold text-primary-text">₹800</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border font-bold">Party &amp; Everyday</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Light Day 'No-Makeup' Look</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">45m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;1,500</span>
+        <a href="contact.html?service=makeup" class="book-row-btn">Book</a>
+    </div>
 </div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Classic Party Makeup</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">60m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;2,500</span>
+        <a href="contact.html?service=makeup" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Signature HD Cocktail Glam</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">75m</span>
+            <span class="popular-badge">★ Popular</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;3,500</span>
+        <a href="contact.html?service=makeup" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Airbrush High-Definition Makeup</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">90m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;4,500</span>
+        <a href="contact.html?service=makeup" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Saree / Lehenga Draping</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">30m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;800</span>
+        <a href="contact.html?service=makeup" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+</div>
+
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Engagement &amp; Bridal</div>
-<div class="price-row"><span class="price-name text-primary-text">Engagement Makeup</span><span class="text-sm font-bold text-primary-text">₹6,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Reception Makeup</span><span class="text-sm font-bold text-primary-text">₹8,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Bridal Trial Makeup</span><span class="text-sm font-bold text-primary-text">₹4,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Bridal Makeup (Day-of)</span><span class="text-sm font-bold text-primary-text">₹15,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Family / Bridesmaid Makeup (per person)</span><span class="text-sm font-bold text-primary-text">₹2,500</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0 font-bold">Engagement &amp; Bridal</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Engagement / Roka Makeup</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">90m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;6,500</span>
+        <a href="contact.html?service=makeup" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Reception Evening Glam</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">100m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;8,500</span>
+        <a href="contact.html?service=makeup" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Bridal Trial Makeup</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">120m</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;4,000</span>
+        <a href="contact.html?service=bridal" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Full Bridal Day Artistry</span>
+        <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="duration-badge">180m</span>
+            <span class="popular-badge">★ Popular</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;15,000</span>
+        <a href="contact.html?service=bridal" class="book-row-btn">Book</a>
+    </div>
+</div>
+
 </div>
 </div>
 </div>
+
 <!-- NAILS -->
 <div class="price-cat-panel" data-cat="nails">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Manicure</div>
-<div class="price-row"><span class="price-name text-primary-text">Classic Manicure</span><span class="text-sm font-bold text-primary-text">₹600</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Spa Manicure</span><span class="text-sm font-bold text-primary-text">₹900</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Gel Polish Manicure</span><span class="text-sm font-bold text-primary-text">₹1,400</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Gel Nail Extensions (Full Set)</span><span class="text-sm font-bold text-primary-text">₹2,800</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Nail Art (per nail)</span><span class="text-sm font-bold text-primary-text">₹80</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Nail Extension Refills</span><span class="text-sm font-bold text-primary-text">₹1,800</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border font-bold">Manicures</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Classic Botanical Manicure</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">35m</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;600</span>
+        <a href="contact.html?service=nails" class="book-row-btn">Book</a>
+    </div>
 </div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Spa Hydration Manicure</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">45m</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;900</span>
+        <a href="contact.html?service=nails" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Long-Wear Gel Polish Manicure</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">50m</span><span class="popular-badge">★ Popular</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;1,400</span>
+        <a href="contact.html?service=nails" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Sculpted Gel Extensions (Full Set)</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">90m</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;2,800</span>
+        <a href="contact.html?service=nails" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+</div>
+
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Pedicure</div>
-<div class="price-row"><span class="price-name text-primary-text">Classic Pedicure</span><span class="text-sm font-bold text-primary-text">₹800</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Spa Pedicure</span><span class="text-sm font-bold text-primary-text">₹1,200</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Gel Polish Pedicure</span><span class="text-sm font-bold text-primary-text">₹1,600</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Heel Crack Treatment</span><span class="text-sm font-bold text-primary-text">₹1,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Foot Massage (20 min)</span><span class="text-sm font-bold text-primary-text">₹600</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0 font-bold">Pedicures</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Classic Pedicure</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">45m</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;800</span>
+        <a href="contact.html?service=nails" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Reflexology Spa Pedicure</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">60m</span><span class="popular-badge">★ Popular</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;1,200</span>
+        <a href="contact.html?service=nails" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Heel Crack Mineral Treatment</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">40m</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;1,000</span>
+        <a href="contact.html?service=nails" class="book-row-btn">Book</a>
+    </div>
+</div>
+
 </div>
 </div>
 </div>
+
 <!-- SPA -->
 <div class="price-cat-panel" data-cat="spa">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Massage</div>
-<div class="price-row"><span class="price-name text-primary-text">Head &amp; Shoulder Massage (20 min)</span><span class="text-sm font-bold text-primary-text">₹600</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Back &amp; Neck Massage (30 min)</span><span class="text-sm font-bold text-primary-text">₹1,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Full-Body Relaxation (60 min)</span><span class="text-sm font-bold text-primary-text">₹2,200</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Aroma Therapy Massage (90 min)</span><span class="text-sm font-bold text-primary-text">₹3,200</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Deep Tissue Massage (60 min)</span><span class="text-sm font-bold text-primary-text">₹2,800</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border font-bold">Massages</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Head &amp; Shoulder Pressure Release</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">25m</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;600</span>
+        <a href="contact.html?service=spa" class="book-row-btn">Book</a>
+    </div>
 </div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Full-Body Relaxation Massage</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">60m</span><span class="popular-badge">★ Popular</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;2,200</span>
+        <a href="contact.html?service=spa" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Aromatherapy Botanicals Massage</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">90m</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;3,200</span>
+        <a href="contact.html?service=spa" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+</div>
+
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Body &amp; Waxing</div>
-<div class="price-row"><span class="price-name text-primary-text">Body Polishing (Full)</span><span class="text-sm font-bold text-primary-text">₹3,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Body Wrap (De-Stress)</span><span class="text-sm font-bold text-primary-text">₹3,200</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Full Arms Waxing (Rica)</span><span class="text-sm font-bold text-primary-text">₹700</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Full Legs Waxing (Rica)</span><span class="text-sm font-bold text-primary-text">₹900</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Underarms Waxing</span><span class="text-sm font-bold text-primary-text">₹150</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Full Body Waxing (Rica)</span><span class="text-sm font-bold text-primary-text">₹3,500</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0 font-bold">Body &amp; Waxing</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Himalayan Salt Body Polishing</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">75m</span><span class="popular-badge">★ Popular</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;3,500</span>
+        <a href="contact.html?service=spa" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Full Body Rica Waxing</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">60m</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;3,500</span>
+        <a href="contact.html?service=spa" class="book-row-btn">Book</a>
+    </div>
+</div>
+
 </div>
 </div>
 </div>
+
 <!-- BRIDAL -->
 <div class="price-cat-panel" data-cat="bridal">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border">Bridal Packages</div>
-<div class="price-row"><span class="price-name text-primary-text">Bridal Makeup — Essential</span><span class="text-sm font-bold text-primary-text">₹15,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Bridal Makeup — Signature</span><span class="text-sm font-bold text-primary-text">₹25,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Bridal Makeup — Luxe (with trial)</span><span class="text-sm font-bold text-primary-text">₹40,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Engagement Package</span><span class="text-sm font-bold text-primary-text">₹18,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Sangeet / Mehendi Package</span><span class="text-sm font-bold text-primary-text">₹12,000</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border font-bold">Bridal Packages</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Bridal Day — Essential</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">120m</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;15,000</span>
+        <a href="contact.html?service=bridal" class="book-row-btn">Book</a>
+    </div>
 </div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Bridal Day — Signature Airbrush</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">180m</span><span class="popular-badge">★ Popular</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;25,000</span>
+        <a href="contact.html?service=bridal" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Bridal Luxe (With Pre-Trial &amp; Suite)</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">Half Day</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;40,000</span>
+        <a href="contact.html?service=bridal" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+</div>
+
 <div>
-<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0">Pre-Bridal Programs</div>
-<div class="price-row"><span class="price-name text-primary-text">Pre-Bridal Skin &amp; Hair (4 weeks)</span><span class="text-sm font-bold text-primary-text">₹12,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Pre-Bridal Skin &amp; Hair (8 weeks)</span><span class="text-sm font-bold text-primary-text">₹22,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Bridal Glow Facial Series (3)</span><span class="text-sm font-bold text-primary-text">₹7,500</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Bridal Hair Spa Series (3)</span><span class="text-sm font-bold text-primary-text">₹4,000</span></div>
-<div class="price-row"><span class="price-name text-primary-text">Family / Bridesmaid (per person)</span><span class="text-sm font-bold text-primary-text">₹2,500</span></div>
+<div class="text-xs uppercase tracking-widest text-secondary-text mb-4 pb-3 border-b border-border mt-8 md:mt-0 font-bold">Pre-Bridal Radiance Timelines</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Pre-Bridal Skin &amp; Hair (4 Weeks)</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">4 Sessions</span><span class="popular-badge">★ Popular</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;12,000</span>
+        <a href="contact.html?service=bridal" class="book-row-btn">Book</a>
+    </div>
+</div>
+
+<div class="price-row">
+    <div>
+        <span class="price-name text-primary-text block">Pre-Bridal Complete (8 Weeks)</span>
+        <div class="flex items-center gap-1.5 mt-0.5"><span class="duration-badge">8 Sessions</span></div>
+    </div>
+    <div class="flex items-center gap-3">
+        <span class="font-display font-bold text-accent text-base">&#8377;22,000</span>
+        <a href="contact.html?service=bridal" class="book-row-btn">Book</a>
+    </div>
+</div>
+
 </div>
 </div>
 </div>
+
 </div>
 <!-- Note -->
 <div class="max-w-4xl mx-auto mt-12 bg-hover rounded-2xl p-6 border border-border flex items-start gap-4">
@@ -877,9 +1685,9 @@
 </section>
 </main>
 <!-- ══════════ MOBILE DRAWER ══════════ -->
-<div class="fixed inset-0 z-[70] pointer-events-none" id="mobile-drawer">
+<div class="fixed inset-0 z-[70] pointer-events-none xl:hidden" id="mobile-drawer">
 <div class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none" id="drawer-backdrop"></div>
-<div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-background shadow-2xl xl:hidden overflow-y-auto transform translate-x-full" id="drawer-panel">
+<div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-background shadow-2xl overflow-y-auto transform translate-x-full" id="drawer-panel">
 <div class="p-6 border-b border-border flex justify-between items-center">
 <a class="brand-logo" href="index.html" style="padding-left: 0;">
 <div class="brand-mark"><i class="fa-solid fa-spa"></i></div>
@@ -891,6 +1699,20 @@
 <button class="nav-icon-btn" id="mobile-close">
 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
+</div>
+<!-- Prominent Mobile Drawer CTAs -->
+<div class="p-5 border-b border-border bg-cream/60 space-y-2">
+    <a class="btn-primary w-full py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm" href="contact.html">
+        <i class="fa-solid fa-calendar-check text-accent"></i> Book Now
+    </a>
+    <div class="grid grid-cols-2 gap-2">
+        <a class="btn-outline py-2.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-center" href="services.html">
+            Explore Services
+        </a>
+        <a class="btn-outline py-2.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-center" href="#pricing-menu">
+            View Pricing
+        </a>
+    </div>
 </div>
 <nav>
 <div>
@@ -912,7 +1734,36 @@
 <a class="drawer-link" href="tips.html">Tips</a>
 <a class="drawer-link" href="contact.html">Contact</a>
 </nav>
-<div class="p-6 flex justify-around border-t border-border mt-4">
+<!-- Mobile Drawer Contact & Hours Info Card -->
+<div class="m-5 p-4 rounded-2xl bg-cream border border-border space-y-3">
+    <div class="flex items-center gap-2.5">
+        <span class="w-7 h-7 rounded-full bg-terra-soft text-accent flex items-center justify-center text-xs shrink-0">
+            <i class="fa-solid fa-clock"></i>
+        </span>
+        <div>
+            <div class="text-[10px] uppercase font-bold text-primary-text">Opening Hours</div>
+            <div class="text-xs text-secondary-text">Daily: 10:00 AM – 8:00 PM</div>
+        </div>
+    </div>
+    <div class="flex items-center gap-2.5">
+        <span class="w-7 h-7 rounded-full bg-sage-soft text-[var(--sage)] flex items-center justify-center text-xs shrink-0">
+            <i class="fa-solid fa-location-dot"></i>
+        </span>
+        <div>
+            <div class="text-[10px] uppercase font-bold text-primary-text">Bandra Sanctuary</div>
+            <div class="text-xs text-secondary-text">14B Waterfield Rd, Mumbai</div>
+        </div>
+    </div>
+    <div class="pt-2 border-t border-border flex items-center justify-between">
+        <a href="tel:+919820012345" class="text-xs font-bold text-accent hover:underline flex items-center gap-1.5">
+            <i class="fa-solid fa-phone"></i> +91 98200 12345
+        </a>
+        <a href="https://wa.me/919820012345" target="_blank" class="text-xs font-bold text-emerald-600 hover:underline flex items-center gap-1">
+            <i class="fa-brands fa-whatsapp"></i> Chat
+        </a>
+    </div>
+</div>
+<div class="p-6 flex justify-around border-t border-border mt-2">
 <button class="flex flex-col items-center gap-1 text-xs" id="mobile-lang-icon-drawer" style="color: var(--color-secondary-text);">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
                     RTL
@@ -1056,6 +1907,33 @@
                     document.querySelector(`.price-cat-panel[data-cat="${cat}"]`)?.classList.add('active');
                 });
             });
+
+            // Live pricing quick-filter
+            const filterInput = document.getElementById('pricing-filter');
+            if (filterInput) {
+                filterInput.addEventListener('input', (e) => {
+                    const q = e.target.value.toLowerCase().trim();
+                    const allRows = document.querySelectorAll('.price-row');
+                    if (!q) {
+                        allRows.forEach(r => r.style.display = '');
+                        return;
+                    }
+                    // If searching, ensure user can see matches even if inside another panel
+                    allRows.forEach(r => {
+                        const txt = r.textContent.toLowerCase();
+                        const matches = txt.includes(q);
+                        r.style.display = matches ? 'flex' : 'none';
+                        if (matches) {
+                            const parentPanel = r.closest('.price-cat-panel');
+                            if (parentPanel && !parentPanel.classList.contains('active')) {
+                                const cat = parentPanel.dataset.cat;
+                                tabs.forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+                                panels.forEach(p => p.classList.toggle('active', p === parentPanel));
+                            }
+                        }
+                    });
+                });
+            }
         });
     </script>
 </body>
